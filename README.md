@@ -1,4 +1,4 @@
-# Java_EE
+# enterprise-parcel-delivery
 ##ENGINEERING ENTERPRISE APPLICATION : COSE60590-2016-SUG1-2016-SUG2
 
 Implement your enterprise application using Java EE. You should ensure consistency between the implementation and the design that you
