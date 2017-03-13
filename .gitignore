@@ -1,7 +1,9 @@
-/ParcelEnterpriseApplication/nbproject/private/
-/ParcelEnterpriseApplication/nbproject/*
-/ParcelEnterpriseApplication/ParcelEnterpriseApplication-war/nbproject/private/
-/ParcelEnterpriseApplication/ParcelEnterpriseApplication-ejb/nbproject/private/
-/ParcelEnterpriseApplication/ParcelEnterpriseApplication-ejb/build/
-/ParcelEnterpriseApplication/ParcelEnterpriseApplication-ejb/dist/
-
+/ParcelEnterpriceApplication/nbproject/private/
+/ParcelEnterpriceApplication/ParcelEnterpriceApplication-war/nbproject/private/
+/ParcelEnterpriceApplication/ParcelEnterpriceApplication-ejb/nbproject/private/
+/ParcelEnterpriceApplication/ParcelEnterpriceApplication-ejb/build/
+/ParcelEnterpriceApplication/ParcelEnterpriceApplication-war/build/
+/ParcelEnterpriceApplication/ParcelEnterpriceApplication-ejb/dist/
+/ParcelEnterpriceApplication/build/
+/ParcelEnterpriceApplication/ParcelEnterpriceApplication-war/dist/
+/ParcelEnterpriceApplication/dist/

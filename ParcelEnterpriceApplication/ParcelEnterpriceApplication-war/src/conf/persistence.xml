@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ParcelEnterpriceApplication-warPU" transaction-type="JTA">
+    <jta-data-source>jdbc/parcelsystem</jta-data-source>
+    <class>uk.co.giovannilenguito.entities.Address</class>
+    <class>uk.co.giovannilenguito.entities.Customer</class>
+    <class>uk.co.giovannilenguito.entities.Driver</class>
+    <class>uk.co.giovannilenguito.entities.Location</class>
+    <class>uk.co.giovannilenguito.entities.Log</class>
+    <class>uk.co.giovannilenguito.entities.Parcel</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+</persistence>
