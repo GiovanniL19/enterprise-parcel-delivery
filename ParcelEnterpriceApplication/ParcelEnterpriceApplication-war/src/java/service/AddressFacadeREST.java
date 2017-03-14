@@ -1,9 +1,8 @@
 package service;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.AddressFacadeLocal;
 import uk.co.giovannilenguito.entities.Address;
 
 /**
@@ -21,54 +21,45 @@ import uk.co.giovannilenguito.entities.Address;
  */
 @Stateless
 @Path("address")
-public class AddressFacadeREST extends AbstractFacade<Address> {
+public class AddressFacadeREST {
 
-    @PersistenceContext(unitName = "ParcelEnterpriceApplication-warPU")
-    private EntityManager em;
-
-    public AddressFacadeREST() {
-        super(Address.class);
-    }
+    @EJB
+    private AddressFacadeLocal addressFacadeLocal;
 
     @POST
     @Path("new")
-    @Override
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Address entity) {
-        super.create(entity);
+    public String create(String entity) {
+        //TODO: Parse JSON to Address object
+        return entity;
+        //addressFacadeLocal.create(entity);
     }
 
     @PUT
-    @Path("{id}")
+    @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Address entity) {
-        super.edit(entity);
+        addressFacadeLocal.edit(entity);
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("delete/{id}")
     public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+        addressFacadeLocal.remove(addressFacadeLocal.find(id));
     }
 
     @GET
-    @Path("{id}")
+    @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Address find(@PathParam("id") Integer id) {
-        return super.find(id);
+        return addressFacadeLocal.find(id);
     }
 
     @GET
-    @Path("all")
-    @Override
+    @Path("find/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Address> findAll() {
-        return super.findAll();
+        //Call session bean method
+        return addressFacadeLocal.findAll();
     }
-    
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-    
 }
