@@ -1,9 +1,8 @@
 package service;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.DriverFacadeLocal;
 import uk.co.giovannilenguito.entities.Driver;
 
 /**
@@ -21,54 +21,43 @@ import uk.co.giovannilenguito.entities.Driver;
  */
 @Stateless
 @Path("driver")
-public class DriverFacadeREST extends AbstractFacade<Driver> {
+public class DriverFacadeREST{
 
-    @PersistenceContext(unitName = "ParcelEnterpriceApplication-warPU")
-    private EntityManager em;
-
-    public DriverFacadeREST() {
-        super(Driver.class);
-    }
+    @EJB
+    DriverFacadeLocal driverFacadeLocal;
 
     @POST
     @Path("new")
-    @Override
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(Driver entity) {
-        super.create(entity);
+        driverFacadeLocal.create(entity);
     }
 
     @PUT
-    @Path("{id}")
+    @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Driver entity) {
-        super.edit(entity);
+        driverFacadeLocal.edit(entity);
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("remove/{id}")
     public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+        driverFacadeLocal.remove(driverFacadeLocal.find(id));
     }
 
     @GET
-    @Path("{id}")
+    @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Driver find(@PathParam("id") Integer id) {
-        return super.find(id);
+        return driverFacadeLocal.find(id);
     }
 
     @GET
-    @Path("all")
-    @Override
+    @Path("find/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Driver> findAll() {
-        return super.findAll();
-    }
-    
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+        return driverFacadeLocal.findAll();
     }
     
 }

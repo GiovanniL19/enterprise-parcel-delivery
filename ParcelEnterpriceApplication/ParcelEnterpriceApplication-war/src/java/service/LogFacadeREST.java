@@ -1,9 +1,8 @@
 package service;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.LogFacadeLocal;
 import uk.co.giovannilenguito.entities.Log;
 
 /**
@@ -21,54 +21,43 @@ import uk.co.giovannilenguito.entities.Log;
  */
 @Stateless
 @Path("log")
-public class LogFacadeREST extends AbstractFacade<Log> {
+public class LogFacadeREST {
 
-    @PersistenceContext(unitName = "ParcelEnterpriceApplication-warPU")
-    private EntityManager em;
-
-    public LogFacadeREST() {
-        super(Log.class);
-    }
-
+    @EJB
+    LogFacadeLocal logFacadeLocal;
+    
     @POST
     @Path("new")
-    @Override
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(Log entity) {
-        super.create(entity);
+        logFacadeLocal.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Log entity) {
-        super.edit(entity);
+        logFacadeLocal.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+        logFacadeLocal.remove(logFacadeLocal.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Log find(@PathParam("id") Integer id) {
-        return super.find(id);
+        return logFacadeLocal.find(id);
     }
 
     @GET
     @Path("all")
-    @Override
     @Produces(MediaType.APPLICATION_JSON)
     public List<Log> findAll() {
-        return super.findAll();
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+        return logFacadeLocal.findAll();
     }
     
 }

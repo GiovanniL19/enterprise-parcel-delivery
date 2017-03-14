@@ -29,10 +29,8 @@ public class AddressFacadeREST {
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String create(String entity) {
-        //TODO: Parse JSON to Address object
-        return entity;
-        //addressFacadeLocal.create(entity);
+    public void create(Address entity) {
+        addressFacadeLocal.create(entity);
     }
 
     @PUT

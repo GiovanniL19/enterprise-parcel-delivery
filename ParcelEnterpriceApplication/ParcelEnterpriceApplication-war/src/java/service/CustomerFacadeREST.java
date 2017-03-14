@@ -1,9 +1,8 @@
 package service;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.CustomerFacadeLocal;
 import uk.co.giovannilenguito.entities.Customer;
 
 /**
@@ -21,54 +21,42 @@ import uk.co.giovannilenguito.entities.Customer;
  */
 @Stateless
 @Path("customer")
-public class CustomerFacadeREST extends AbstractFacade<Customer> {
+public class CustomerFacadeREST{
 
-    @PersistenceContext(unitName = "ParcelEnterpriceApplication-warPU")
-    private EntityManager em;
-
-    public CustomerFacadeREST() {
-        super(Customer.class);
-    }
-
+    @EJB
+    CustomerFacadeLocal customerFacadeLocal;
+    
     @POST
     @Path("new")
-    @Override
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(Customer entity) {
-        super.create(entity);
+        customerFacadeLocal.create(entity);
     }
 
     @PUT
-    @Path("{id}")
+    @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Customer entity) {
-        super.edit(entity);
+        customerFacadeLocal.edit(entity);
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("delete/{id}")
     public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+        customerFacadeLocal.remove(customerFacadeLocal.find(id));
     }
 
     @GET
-    @Path("{id}")
+    @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Customer find(@PathParam("id") Integer id) {
-        return super.find(id);
+        return customerFacadeLocal.find(id);
     }
 
     @GET
-    @Path("all")
-    @Override
+    @Path("find/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Customer> findAll() {
-        return super.findAll();
+        return customerFacadeLocal.findAll();
     }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-    
 }

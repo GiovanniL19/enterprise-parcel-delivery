@@ -1,9 +1,8 @@
 package service;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.LocationFacadeLocal;
 import uk.co.giovannilenguito.entities.Location;
 
 /**
@@ -21,54 +21,43 @@ import uk.co.giovannilenguito.entities.Location;
  */
 @Stateless
 @Path("location")
-public class LocationFacadeREST extends AbstractFacade<Location> {
+public class LocationFacadeREST {
 
-    @PersistenceContext(unitName = "ParcelEnterpriceApplication-warPU")
-    private EntityManager em;
-
-    public LocationFacadeREST() {
-        super(Location.class);
-    }
-
+    @EJB
+    LocationFacadeLocal locationFacadeLocal;
+    
     @POST
     @Path("new")
-    @Override
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(Location entity) {
-        super.create(entity);
+        locationFacadeLocal.create(entity);
     }
 
     @PUT
-    @Path("{id}")
+    @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Location entity) {
-        super.edit(entity);
+        locationFacadeLocal.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
     public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+        locationFacadeLocal.remove(locationFacadeLocal.find(id));
     }
 
     @GET
-    @Path("{id}")
+    @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Location find(@PathParam("id") Integer id) {
-        return super.find(id);
+        return locationFacadeLocal.find(id);
     }
 
     @GET
-    @Path("all")
-    @Override
+    @Path("find/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Location> findAll() {
-        return super.findAll();
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+        return locationFacadeLocal.findAll();
     }
     
 }
