@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -30,6 +28,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Address.findAll", query = "SELECT a FROM Address a")
     , @NamedQuery(name = "Address.findByAddressId", query = "SELECT a FROM Address a WHERE a.addressId = :addressId")
+    , @NamedQuery(name = "Address.findByCustomerId", query = "SELECT a FROM Address a WHERE a.customerId = :customerId")
+    , @NamedQuery(name = "Address.findByParcelId", query = "SELECT a FROM Address a WHERE a.parcelId = :parcelId")
     , @NamedQuery(name = "Address.findByLineOne", query = "SELECT a FROM Address a WHERE a.lineOne = :lineOne")
     , @NamedQuery(name = "Address.findByLineTwo", query = "SELECT a FROM Address a WHERE a.lineTwo = :lineTwo")
     , @NamedQuery(name = "Address.findByCity", query = "SELECT a FROM Address a WHERE a.city = :city")
@@ -42,6 +42,14 @@ public class Address implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ADDRESS_ID")
     private Integer addressId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CUSTOMER_ID")
+    private int customerId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "PARCEL_ID")
+    private int parcelId;
     @Size(max = 255)
     @Column(name = "LINE_ONE")
     private String lineOne;
@@ -59,12 +67,6 @@ public class Address implements Serializable {
     private String country;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "collectionAddress")
     private Collection<Parcel> parcelCollection;
-    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
-    @ManyToOne(optional = false)
-    private Customer customerId;
-    @JoinColumn(name = "PARCEL_ID", referencedColumnName = "PARCEL_ID")
-    @ManyToOne(optional = false)
-    private Parcel parcelId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
     private Collection<Customer> customerCollection;
 
@@ -75,12 +77,34 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
+    public Address(Integer addressId, int customerId, int parcelId) {
+        this.addressId = addressId;
+        this.customerId = customerId;
+        this.parcelId = parcelId;
+    }
+
     public Integer getAddressId() {
         return addressId;
     }
 
     public void setAddressId(Integer addressId) {
         this.addressId = addressId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getParcelId() {
+        return parcelId;
+    }
+
+    public void setParcelId(int parcelId) {
+        this.parcelId = parcelId;
     }
 
     public String getLineOne() {
@@ -132,22 +156,6 @@ public class Address implements Serializable {
         this.parcelCollection = parcelCollection;
     }
 
-    public Customer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
-    }
-
-    public Parcel getParcelId() {
-        return parcelId;
-    }
-
-    public void setParcelId(Parcel parcelId) {
-        this.parcelId = parcelId;
-    }
-
     @XmlTransient
     public Collection<Customer> getCustomerCollection() {
         return customerCollection;
@@ -179,7 +187,7 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "uk.co.giovannilenguito.Address[ addressId=" + addressId + " ]";
+        return "uk.co.giovannilenguito.entities.Address[ addressId=" + addressId + " ]";
     }
     
 }

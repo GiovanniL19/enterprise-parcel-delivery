@@ -2,6 +2,7 @@ package uk.co.giovannilenguito.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -142,7 +143,7 @@ public class Driver implements Serializable {
 
     @Override
     public String toString() {
-        return "uk.co.giovannilenguito.Driver[ driverId=" + driverId + " ]";
+        return "uk.co.giovannilenguito.entities.Driver[ driverId=" + driverId + " ]";
     }
     
 }

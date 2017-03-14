@@ -41,7 +41,7 @@ public class LocationFacadeREST {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("delete/{id}")
     public void remove(@PathParam("id") Integer id) {
         locationFacadeLocal.remove(locationFacadeLocal.find(id));
     }

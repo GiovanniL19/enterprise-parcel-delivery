@@ -15,7 +15,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -59,8 +58,6 @@ public class Customer implements Serializable {
     private String fullName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
     private Collection<Parcel> parcelCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
-    private Collection<Address> addressCollection;
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
     @ManyToOne(optional = false)
     private Address addressId;
@@ -129,15 +126,6 @@ public class Customer implements Serializable {
         this.parcelCollection = parcelCollection;
     }
 
-    @XmlTransient
-    public Collection<Address> getAddressCollection() {
-        return addressCollection;
-    }
-
-    public void setAddressCollection(Collection<Address> addressCollection) {
-        this.addressCollection = addressCollection;
-    }
-
     public Address getAddressId() {
         return addressId;
     }
@@ -168,7 +156,7 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "uk.co.giovannilenguito.Customer[ customerId=" + customerId + " ]";
+        return "uk.co.giovannilenguito.entities.Customer[ customerId=" + customerId + " ]";
     }
     
 }

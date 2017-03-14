@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -93,7 +92,7 @@ public class Log implements Serializable {
 
     @Override
     public String toString() {
-        return "uk.co.giovannilenguito.Log[ logId=" + logId + " ]";
+        return "uk.co.giovannilenguito.entities.Log[ logId=" + logId + " ]";
     }
     
 }

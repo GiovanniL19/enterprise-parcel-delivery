@@ -211,7 +211,7 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "uk.co.giovannilenguito.Location[ locationId=" + locationId + " ]";
+        return "uk.co.giovannilenguito.entities.Location[ locationId=" + locationId + " ]";
     }
     
 }

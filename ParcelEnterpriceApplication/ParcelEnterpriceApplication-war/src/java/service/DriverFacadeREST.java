@@ -41,7 +41,7 @@ public class DriverFacadeREST{
     }
 
     @DELETE
-    @Path("remove/{id}")
+    @Path("delete/{id}")
     public void remove(@PathParam("id") Integer id) {
         driverFacadeLocal.remove(driverFacadeLocal.find(id));
     }

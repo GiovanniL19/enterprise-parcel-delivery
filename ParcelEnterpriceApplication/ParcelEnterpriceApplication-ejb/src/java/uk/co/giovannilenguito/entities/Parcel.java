@@ -69,8 +69,6 @@ public class Parcel implements Serializable {
     @JoinColumn(name = "LOCATION_ID", referencedColumnName = "LOCATION_ID")
     @ManyToOne(optional = false)
     private Location locationId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parcelId")
-    private Collection<Address> addressCollection;
 
     public Parcel() {
     }
@@ -166,15 +164,6 @@ public class Parcel implements Serializable {
         this.locationId = locationId;
     }
 
-    @XmlTransient
-    public Collection<Address> getAddressCollection() {
-        return addressCollection;
-    }
-
-    public void setAddressCollection(Collection<Address> addressCollection) {
-        this.addressCollection = addressCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -197,7 +186,7 @@ public class Parcel implements Serializable {
 
     @Override
     public String toString() {
-        return "uk.co.giovannilenguito.Parcel[ parcelId=" + parcelId + " ]";
+        return "uk.co.giovannilenguito.entities.Parcel[ parcelId=" + parcelId + " ]";
     }
     
 }

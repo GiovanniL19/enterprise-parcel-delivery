@@ -34,27 +34,27 @@ public class LogFacadeREST {
     }
 
     @PUT
-    @Path("{id}")
+    @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") Integer id, Log entity) {
         logFacadeLocal.edit(entity);
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("delete/{id}")
     public void remove(@PathParam("id") Integer id) {
         logFacadeLocal.remove(logFacadeLocal.find(id));
     }
 
     @GET
-    @Path("{id}")
+    @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Log find(@PathParam("id") Integer id) {
         return logFacadeLocal.find(id);
     }
 
     @GET
-    @Path("all")
+    @Path("find/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Log> findAll() {
         return logFacadeLocal.findAll();
