@@ -18,6 +18,8 @@ public interface DriverFacadeLocal {
     void remove(Driver driver);
 
     Driver find(Object id);
+    
+    Driver findByUsername(Object username);
 
     List<Driver> findAll();
 

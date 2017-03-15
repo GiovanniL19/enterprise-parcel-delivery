@@ -2,7 +2,7 @@ package uk.co.giovannilenguito.beans;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-
+import javax.persistence.Query;
 /**
  *
  * @author Giovanni Lenguito <giovanni16.gl@gmail.com>
@@ -32,7 +32,17 @@ public abstract class AbstractFacade<T> {
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
-
+    
+    public T findByUsername(Object username)    
+    {
+        String entityName = entityClass.getName().replace(".", " ");
+        entityName = entityName.substring(entityName.lastIndexOf(" ") + 1);
+        
+        Query query = getEntityManager().createNamedQuery(entityName + ".findByUsername");
+        query.setParameter("username", username);
+        return (T) query.getSingleResult();
+    }
+    
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));

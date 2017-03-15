@@ -52,7 +52,14 @@ public class CustomerFacadeREST{
     public Customer find(@PathParam("id") Integer id) {
         return customerFacadeLocal.find(id);
     }
-
+    
+    @GET
+    @Path("findByUsername/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Customer findByUsername(@PathParam("username") String username) {
+        return customerFacadeLocal.findByUsername(username);
+    }
+    
     @GET
     @Path("find/all")
     @Produces(MediaType.APPLICATION_JSON)

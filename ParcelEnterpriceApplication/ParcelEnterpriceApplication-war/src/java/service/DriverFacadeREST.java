@@ -54,6 +54,13 @@ public class DriverFacadeREST{
     }
 
     @GET
+    @Path("findByUsername/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Driver findByUsername(@PathParam("username") String username) {
+        return driverFacadeLocal.findByUsername(username);
+    }
+    
+    @GET
     @Path("find/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Driver> findAll() {

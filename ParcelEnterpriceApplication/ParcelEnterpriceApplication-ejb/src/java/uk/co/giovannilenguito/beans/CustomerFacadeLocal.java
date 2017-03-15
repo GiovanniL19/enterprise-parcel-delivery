@@ -18,6 +18,8 @@ public interface CustomerFacadeLocal {
     void remove(Customer customer);
 
     Customer find(Object id);
+    
+    Customer findByUsername(Object username);
 
     List<Customer> findAll();
 
