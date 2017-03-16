@@ -44,8 +44,9 @@ public class Customer implements Serializable {
     @Size(max = 80)
     @Column(name = "EMAIL")
     private String email;
+    @Size(max = 11)
     @Column(name = "CONTACT_NUMBER")
-    private Integer contactNumber;
+    private String contactNumber;
     @Size(max = 255)
     @Column(name = "USERNAME")
     private String username;
@@ -84,11 +85,11 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    public Integer getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(Integer contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 

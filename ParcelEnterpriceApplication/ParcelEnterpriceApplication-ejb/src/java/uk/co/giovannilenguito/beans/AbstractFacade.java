@@ -33,14 +33,25 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
     
-    public T findByUsername(Object username)    
-    {
+    public T findByUsername(Object username){
         String entityName = entityClass.getName().replace(".", " ");
         entityName = entityName.substring(entityName.lastIndexOf(" ") + 1);
         
         Query query = getEntityManager().createNamedQuery(entityName + ".findByUsername");
         query.setParameter("username", username);
         return (T) query.getSingleResult();
+    }
+    
+    public T findByCustomer(int id)    {
+        Query query = getEntityManager().createNamedQuery("Parcel.findByCustomer");
+        query.setParameter("customerId", id);
+        return (T) query.getResultList();
+    }
+    
+    public T findByDriver(int id)    {
+        Query query = getEntityManager().createNamedQuery("Parcel.findByDriver");
+        query.setParameter("driverId", id);
+        return (T) query.getResultList();
     }
     
     public List<T> findAll() {

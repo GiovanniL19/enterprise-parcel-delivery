@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Parcel.findByServiceType", query = "SELECT p FROM Parcel p WHERE p.serviceType = :serviceType")
     , @NamedQuery(name = "Parcel.findByContents", query = "SELECT p FROM Parcel p WHERE p.contents = :contents")
     , @NamedQuery(name = "Parcel.findByDateBooked", query = "SELECT p FROM Parcel p WHERE p.dateBooked = :dateBooked")
+    , @NamedQuery(name = "Parcel.findByCustomer", query = "SELECT p FROM Parcel p WHERE p.customerId = :customerId")
+    , @NamedQuery(name = "Parcel.findByDriver", query = "SELECT p FROM Parcel p WHERE p.driverId = :driverId")
     , @NamedQuery(name = "Parcel.findByDeliveryDate", query = "SELECT p FROM Parcel p WHERE p.deliveryDate = :deliveryDate")})
 public class Parcel implements Serializable {
 

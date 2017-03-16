@@ -18,6 +18,10 @@ public interface ParcelFacadeLocal {
     void remove(Parcel parcel);
 
     Parcel find(Object id);
+    
+    Parcel findByCustomer(int id);
+    
+    Parcel findByDriver(int id);
 
     List<Parcel> findAll();
 
