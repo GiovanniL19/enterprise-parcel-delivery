@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
@@ -65,6 +66,16 @@ public class DriverFacadeREST{
     @Produces(MediaType.APPLICATION_JSON)
     public List<Driver> findAll() {
         return driverFacadeLocal.findAll();
+    }
+    
+    @GET
+    @Path("random")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Driver random() {
+        List<Driver> drivers = driverFacadeLocal.findAll();
+        Random random = new Random();
+        int index = random.nextInt(drivers.size());
+        return drivers.get(index);
     }
     
 }

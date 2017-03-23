@@ -2,6 +2,7 @@ package uk.co.giovannilenguito.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,6 +39,7 @@ public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = true)
     @Column(name = "CUSTOMER_ID")
     private Integer customerId;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
@@ -59,7 +61,7 @@ public class Customer implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
     private Collection<Parcel> parcelCollection;
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Address addressId;
 
     public Customer() {
@@ -69,6 +71,19 @@ public class Customer implements Serializable {
         this.customerId = customerId;
     }
 
+    public Customer(Integer customerId, String email, String contactNumber, String username, String password, String fullName, Collection<Parcel> parcelCollection, Address addressId) {
+        this.customerId = customerId;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+        this.parcelCollection = parcelCollection;
+        this.addressId = addressId;
+    }
+
+    
+    
     public Integer getCustomerId() {
         return customerId;
     }

@@ -30,6 +30,7 @@ public class Log implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = true)
     @Column(name = "LOG_ID")
     private Integer logId;
     @Size(max = 255)

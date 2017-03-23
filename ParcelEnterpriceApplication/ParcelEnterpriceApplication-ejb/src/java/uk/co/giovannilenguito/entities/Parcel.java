@@ -1,7 +1,6 @@
 package uk.co.giovannilenguito.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,12 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,14 +30,15 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Parcel.findByServiceType", query = "SELECT p FROM Parcel p WHERE p.serviceType = :serviceType")
     , @NamedQuery(name = "Parcel.findByContents", query = "SELECT p FROM Parcel p WHERE p.contents = :contents")
     , @NamedQuery(name = "Parcel.findByDateBooked", query = "SELECT p FROM Parcel p WHERE p.dateBooked = :dateBooked")
+    , @NamedQuery(name = "Parcel.findByDeliveryDate", query = "SELECT p FROM Parcel p WHERE p.deliveryDate = :deliveryDate")
     , @NamedQuery(name = "Parcel.findByCustomer", query = "SELECT p FROM Parcel p WHERE p.customerId = :customerId")
-    , @NamedQuery(name = "Parcel.findByDriver", query = "SELECT p FROM Parcel p WHERE p.driverId = :driverId")
-    , @NamedQuery(name = "Parcel.findByDeliveryDate", query = "SELECT p FROM Parcel p WHERE p.deliveryDate = :deliveryDate")})
+    , @NamedQuery(name = "Parcel.findByDriver", query = "SELECT p FROM Parcel p WHERE p.driverId = :driverId")})
 public class Parcel implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = true)
     @Column(name = "PARCEL_ID")
     private Integer parcelId;
     @Size(max = 255)
@@ -57,19 +55,17 @@ public class Parcel implements Serializable {
     @NotNull
     @Column(name = "DELIVERY_DATE")
     private int deliveryDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parcelId")
-    private Collection<Location> locationCollection;
-    @JoinColumn(name = "COLLECTION_ADDRESS", referencedColumnName = "ADDRESS_ID")
-    @ManyToOne(optional = false)
-    private Address collectionAddress;
+    @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    private Address addressId;
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Customer customerId;
     @JoinColumn(name = "DRIVER_ID", referencedColumnName = "DRIVER_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Driver driverId;
     @JoinColumn(name = "LOCATION_ID", referencedColumnName = "LOCATION_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Location locationId;
 
     public Parcel() {
@@ -84,6 +80,19 @@ public class Parcel implements Serializable {
         this.dateBooked = dateBooked;
         this.deliveryDate = deliveryDate;
     }
+
+    public Parcel(Integer parcelId, String serviceType, String contents, int dateBooked, int deliveryDate, Address addressId, Customer customerId, Driver driverId, Location locationId) {
+        this.parcelId = parcelId;
+        this.serviceType = serviceType;
+        this.contents = contents;
+        this.dateBooked = dateBooked;
+        this.deliveryDate = deliveryDate;
+        this.addressId = addressId;
+        this.customerId = customerId;
+        this.driverId = driverId;
+        this.locationId = locationId;
+    }
+    
 
     public Integer getParcelId() {
         return parcelId;
@@ -125,21 +134,12 @@ public class Parcel implements Serializable {
         this.deliveryDate = deliveryDate;
     }
 
-    @XmlTransient
-    public Collection<Location> getLocationCollection() {
-        return locationCollection;
+    public Address getAddressId() {
+        return addressId;
     }
 
-    public void setLocationCollection(Collection<Location> locationCollection) {
-        this.locationCollection = locationCollection;
-    }
-
-    public Address getCollectionAddress() {
-        return collectionAddress;
-    }
-
-    public void setCollectionAddress(Address collectionAddress) {
-        this.collectionAddress = collectionAddress;
+    public void setAddressId(Address addressId) {
+        this.addressId = addressId;
     }
 
     public Customer getCustomerId() {

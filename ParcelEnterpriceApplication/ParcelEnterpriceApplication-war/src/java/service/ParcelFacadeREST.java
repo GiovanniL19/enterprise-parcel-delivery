@@ -12,7 +12,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.CustomerFacadeLocal;
+import uk.co.giovannilenguito.beans.DriverFacadeLocal;
 import uk.co.giovannilenguito.beans.ParcelFacadeLocal;
+import uk.co.giovannilenguito.entities.Customer;
+import uk.co.giovannilenguito.entities.Driver;
 import uk.co.giovannilenguito.entities.Parcel;
 
 /**
@@ -25,6 +29,12 @@ public class ParcelFacadeREST {
     
     @EJB
     ParcelFacadeLocal parcelFacadeLocal;
+    
+    @EJB
+    CustomerFacadeLocal customerFacadeLocal;
+    
+    @EJB
+    DriverFacadeLocal driverFacadeLocal;
 
     @POST
     @Path("new")
@@ -46,6 +56,22 @@ public class ParcelFacadeREST {
         parcelFacadeLocal.remove(parcelFacadeLocal.find(id));
     }
 
+    @GET
+    @Path("findByCustomer/{customer}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Parcel> findByCustomer(@PathParam("customer") int customer) {
+        Customer foundCustomer = (Customer) customerFacadeLocal.find(customer);
+        return parcelFacadeLocal.findByCustomer(foundCustomer);
+    }
+    
+    @GET
+    @Path("findByDriver/{driver}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Parcel> findByDriver(@PathParam("driver") int driver) {
+        Driver foundDriver = (Driver) driverFacadeLocal.find(driver);
+        return parcelFacadeLocal.findByDriver(foundDriver);
+    }
+    
     @GET
     @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)

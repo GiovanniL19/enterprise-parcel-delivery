@@ -4,6 +4,7 @@
     <jta-data-source>jdbc/parcelsystem</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <validation-mode>NONE</validation-mode>
-    <properties/>
+    <properties>
+    </properties>
   </persistence-unit>
 </persistence>

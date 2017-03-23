@@ -19,9 +19,9 @@ public interface ParcelFacadeLocal {
 
     Parcel find(Object id);
     
-    Parcel findByCustomer(int id);
+    List<Parcel> findByCustomer(Object id);
     
-    Parcel findByDriver(int id);
+    List<Parcel> findByDriver(Object id);
 
     List<Parcel> findAll();
 

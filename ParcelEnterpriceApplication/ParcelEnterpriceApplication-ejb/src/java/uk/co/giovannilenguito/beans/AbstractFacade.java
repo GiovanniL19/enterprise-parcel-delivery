@@ -3,6 +3,8 @@ package uk.co.giovannilenguito.beans;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import uk.co.giovannilenguito.entities.Customer;
+import uk.co.giovannilenguito.entities.Location;
 /**
  *
  * @author Giovanni Lenguito <giovanni16.gl@gmail.com>
@@ -17,6 +19,12 @@ public abstract class AbstractFacade<T> {
 
     protected abstract EntityManager getEntityManager();
 
+    public int createLocation(Location entity) {
+       getEntityManager().persist(entity);
+       getEntityManager().flush();
+        return entity.getLocationId();
+    }
+    
     public void create(T entity) {
         getEntityManager().persist(entity);
     }
@@ -42,16 +50,24 @@ public abstract class AbstractFacade<T> {
         return (T) query.getSingleResult();
     }
     
-    public T findByCustomer(int id)    {
-        Query query = getEntityManager().createNamedQuery("Parcel.findByCustomer");
-        query.setParameter("customerId", id);
-        return (T) query.getResultList();
+    public List<T> findByCustomer(Object customer)    {
+        String entityName = entityClass.getName().replace(".", " ");
+        entityName = entityName.substring(entityName.lastIndexOf(" ") + 1);
+        
+        Query query = getEntityManager().createNamedQuery(entityName + ".findByCustomer");
+        query.setParameter("customerId", customer);
+        
+        return query.getResultList();
     }
     
-    public T findByDriver(int id)    {
-        Query query = getEntityManager().createNamedQuery("Parcel.findByDriver");
-        query.setParameter("driverId", id);
-        return (T) query.getResultList();
+    public List<T> findByDriver(Object driver)    {
+        String entityName = entityClass.getName().replace(".", " ");
+        entityName = entityName.substring(entityName.lastIndexOf(" ") + 1);
+        
+        Query query = getEntityManager().createNamedQuery(entityName + ".findByDriver");
+        query.setParameter("driverId", driver);
+        
+        return query.getResultList();
     }
     
     public List<T> findAll() {

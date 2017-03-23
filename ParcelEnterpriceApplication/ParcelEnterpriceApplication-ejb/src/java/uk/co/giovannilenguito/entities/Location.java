@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -43,6 +41,7 @@ public class Location implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = true)
     @Column(name = "LOCATION_ID")
     private Integer locationId;
     @Basic(optional = false)
@@ -76,9 +75,6 @@ public class Location implements Serializable {
     @NotNull
     @Column(name = "DATE_TIME")
     private int dateTime;
-    @JoinColumn(name = "PARCEL_ID", referencedColumnName = "PARCEL_ID")
-    @ManyToOne(optional = false)
-    private Parcel parcelId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "locationId")
     private Collection<Parcel> parcelCollection;
 
@@ -89,16 +85,20 @@ public class Location implements Serializable {
         this.locationId = locationId;
     }
 
-    public Location(Integer locationId, double longitude, double latitude, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, int dateTime) {
+    public Location(Integer locationId, double longitude, double latitude, String status, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, int dateTime, Collection<Parcel> parcelCollection) {
         this.locationId = locationId;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.status = status;
         this.isDelivered = isDelivered;
         this.isOutForDelivery = isOutForDelivery;
         this.isCollecting = isCollecting;
         this.isProcessing = isProcessing;
         this.dateTime = dateTime;
+        this.parcelCollection = parcelCollection;
     }
+
+    
 
     public Integer getLocationId() {
         return locationId;
@@ -170,14 +170,6 @@ public class Location implements Serializable {
 
     public void setDateTime(int dateTime) {
         this.dateTime = dateTime;
-    }
-
-    public Parcel getParcelId() {
-        return parcelId;
-    }
-
-    public void setParcelId(Parcel parcelId) {
-        this.parcelId = parcelId;
     }
 
     @XmlTransient

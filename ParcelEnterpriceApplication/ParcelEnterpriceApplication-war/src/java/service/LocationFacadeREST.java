@@ -29,8 +29,8 @@ public class LocationFacadeREST {
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Location entity) {
-        locationFacadeLocal.create(entity);
+    public int create(Location entity) {
+        return locationFacadeLocal.createLocation(entity);
     }
 
     @PUT

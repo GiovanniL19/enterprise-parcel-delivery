@@ -11,7 +11,7 @@ import uk.co.giovannilenguito.entities.Location;
 @Local
 public interface LocationFacadeLocal {
 
-    void create(Location location);
+    int createLocation(Location location);
 
     void edit(Location location);
 

@@ -20,7 +20,7 @@ import uk.co.giovannilenguito.entities.Log;
  * @author Giovanni Lenguito <giovanni16.gl@gmail.com>
  */
 @Stateless
-@Path("log")
+@Path("logs")
 public class LogFacadeREST {
 
     @EJB

@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uk.co.giovannilenguito.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,6 +37,7 @@ public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = true)
     @Column(name = "ADDRESS_ID")
     private Integer addressId;
     @Size(max = 255)
@@ -54,6 +55,10 @@ public class Address implements Serializable {
     @Size(max = 255)
     @Column(name = "COUNTRY")
     private String country;
+    @OneToMany(mappedBy = "addressId")
+    private Collection<Parcel> parcelCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    private Collection<Customer> customerCollection;
 
     public Address() {
     }
@@ -62,6 +67,19 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
+    public Address(Integer addressId, String lineOne, String lineTwo, String city, String postcode, String country, Collection<Parcel> parcelCollection, Collection<Customer> customerCollection) {
+        this.addressId = addressId;
+        this.lineOne = lineOne;
+        this.lineTwo = lineTwo;
+        this.city = city;
+        this.postcode = postcode;
+        this.country = country;
+        this.parcelCollection = parcelCollection;
+        this.customerCollection = customerCollection;
+    }
+
+    
+    
     public Integer getAddressId() {
         return addressId;
     }
@@ -108,6 +126,24 @@ public class Address implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @XmlTransient
+    public Collection<Parcel> getParcelCollection() {
+        return parcelCollection;
+    }
+
+    public void setParcelCollection(Collection<Parcel> parcelCollection) {
+        this.parcelCollection = parcelCollection;
+    }
+
+    @XmlTransient
+    public Collection<Customer> getCustomerCollection() {
+        return customerCollection;
+    }
+
+    public void setCustomerCollection(Collection<Customer> customerCollection) {
+        this.customerCollection = customerCollection;
     }
 
     @Override
