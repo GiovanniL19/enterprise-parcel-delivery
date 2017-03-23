@@ -50,11 +50,21 @@ public class Parcel implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATE_BOOKED")
-    private int dateBooked;
+    @Size(max = 255)
+    private String dateBooked;
     @Basic(optional = false)
     @NotNull
     @Column(name = "DELIVERY_DATE")
-    private int deliveryDate;
+    @Size(max = 255)
+    private String deliveryDate;
+    @Basic(optional = false)
+    @Column(name = "COLLECTION_LINE_ONE")
+    @Size(max = 255)
+    private String collectionLineOne;
+    @Basic(optional = false)
+    @Column(name = "COLLECTION_POSTCODE")
+    @Size(max = 255)
+    private String collectionPostcode;
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Address addressId;
@@ -75,13 +85,13 @@ public class Parcel implements Serializable {
         this.parcelId = parcelId;
     }
 
-    public Parcel(Integer parcelId, int dateBooked, int deliveryDate) {
+    public Parcel(Integer parcelId, String dateBooked, String deliveryDate) {
         this.parcelId = parcelId;
         this.dateBooked = dateBooked;
         this.deliveryDate = deliveryDate;
     }
 
-    public Parcel(Integer parcelId, String serviceType, String contents, int dateBooked, int deliveryDate, Address addressId, Customer customerId, Driver driverId, Location locationId) {
+    public Parcel(Integer parcelId, String serviceType, String contents, String dateBooked, String deliveryDate, Address addressId, Customer customerId, Driver driverId, Location locationId) {
         this.parcelId = parcelId;
         this.serviceType = serviceType;
         this.contents = contents;
@@ -118,22 +128,38 @@ public class Parcel implements Serializable {
         this.contents = contents;
     }
 
-    public int getDateBooked() {
+    public String getDateBooked() {
         return dateBooked;
     }
 
-    public void setDateBooked(int dateBooked) {
+    public void setDateBooked(String dateBooked) {
         this.dateBooked = dateBooked;
     }
 
-    public int getDeliveryDate() {
+    public String getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(int deliveryDate) {
+    public void setDeliveryDate(String deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
+    public String getCollectionLineOne() {
+        return collectionLineOne;
+    }
+
+    public void setCollectionLineOne(String collectionLineOne) {
+        this.collectionLineOne = collectionLineOne;
+    }
+
+    public String getCollectionPostcode() {
+        return collectionPostcode;
+    }
+
+    public void setCollectionPostcode(String collectionPostcode) {
+        this.collectionPostcode = collectionPostcode;
+    }
+    
     public Address getAddressId() {
         return addressId;
     }
