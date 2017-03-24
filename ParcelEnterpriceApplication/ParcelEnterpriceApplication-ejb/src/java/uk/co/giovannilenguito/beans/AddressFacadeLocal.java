@@ -12,6 +12,8 @@ import uk.co.giovannilenguito.entities.Address;
 public interface AddressFacadeLocal {
 
     void create(Address address);
+    
+    int createAddress(Address address);
 
     void edit(Address address);
 

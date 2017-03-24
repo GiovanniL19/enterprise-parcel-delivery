@@ -30,9 +30,9 @@ public class AddressFacadeREST {
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(AddressDTO dtoObj) {
+    public int create(AddressDTO dtoObj) {
         Address entity = new Address(dtoObj.getAddressId(), dtoObj.getLineOne(), dtoObj.getLineTwo(), dtoObj.getCity(), dtoObj.getPostcode(), dtoObj.getCountry());
-        addressFacadeLocal.create(entity);
+        return addressFacadeLocal.createAddress(entity);
     }
 
     @PUT

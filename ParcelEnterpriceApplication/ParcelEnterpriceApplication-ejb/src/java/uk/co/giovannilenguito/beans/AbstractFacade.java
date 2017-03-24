@@ -3,6 +3,7 @@ package uk.co.giovannilenguito.beans;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import uk.co.giovannilenguito.entities.Address;
 import uk.co.giovannilenguito.entities.Customer;
 import uk.co.giovannilenguito.entities.Location;
 /**
@@ -23,6 +24,12 @@ public abstract class AbstractFacade<T> {
        getEntityManager().persist(entity);
        getEntityManager().flush();
         return entity.getLocationId();
+    }
+    
+    public int createAddress(Address entity) {
+       getEntityManager().persist(entity);
+       getEntityManager().flush();
+        return entity.getAddressId();
     }
     
     public void create(T entity) {
