@@ -80,7 +80,7 @@ public class ParcelFacadeREST {
     @GET
     @Path("findByCustomer/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Parcel> findByCustomer(@PathParam("customer") int id) {
+    public List<Parcel> findByCustomer(@PathParam("id") int id) {
         Customer foundCustomer = (Customer) customerFacadeLocal.find(id);
         return parcelFacadeLocal.findByCustomer(foundCustomer);
     }
@@ -88,7 +88,7 @@ public class ParcelFacadeREST {
     @GET
     @Path("findByDriver/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Parcel> findByDriver(@PathParam("driver") int id) {
+    public List<Parcel> findByDriver(@PathParam("id") int id) {
         Driver foundDriver = (Driver) driverFacadeLocal.find(id);
         return parcelFacadeLocal.findByDriver(foundDriver);
     }

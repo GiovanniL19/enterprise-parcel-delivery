@@ -4,7 +4,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import uk.co.giovannilenguito.entities.Address;
-import uk.co.giovannilenguito.entities.Customer;
 import uk.co.giovannilenguito.entities.Location;
 /**
  *

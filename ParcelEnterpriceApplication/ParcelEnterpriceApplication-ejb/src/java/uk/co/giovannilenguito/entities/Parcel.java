@@ -66,16 +66,16 @@ public class Parcel implements Serializable {
     @Size(max = 255)
     private String collectionPostcode;
     @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ADDRESS_ID")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Address addressId;
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Customer customerId;
     @JoinColumn(name = "DRIVER_ID", referencedColumnName = "DRIVER_ID")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Driver driverId;
     @JoinColumn(name = "LOCATION_ID", referencedColumnName = "LOCATION_ID")
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Location locationId;
 
     public Parcel() {
