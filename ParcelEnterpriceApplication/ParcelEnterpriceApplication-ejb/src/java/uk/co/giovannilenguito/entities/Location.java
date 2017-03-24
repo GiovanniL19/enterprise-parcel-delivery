@@ -74,7 +74,7 @@ public class Location implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATE_TIME")
-    private int dateTime;
+    private String dateTime;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "locationId")
     private Collection<Parcel> parcelCollection;
 
@@ -85,7 +85,7 @@ public class Location implements Serializable {
         this.locationId = locationId;
     }
 
-    public Location(Integer locationId, double longitude, double latitude, String status, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, int dateTime) {
+    public Location(Integer locationId, double longitude, double latitude, String status, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, String dateTime) {
         this.locationId = locationId;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -161,11 +161,11 @@ public class Location implements Serializable {
         this.isProcessing = isProcessing;
     }
 
-    public int getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(int dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 

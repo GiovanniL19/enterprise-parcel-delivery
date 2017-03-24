@@ -13,12 +13,12 @@ public class LocationDTO {
     private Boolean isOutForDelivery;
     private Boolean isCollecting;
     private Boolean isProcessing;
-    private int dateTime;
+    private String dateTime;
 
     public LocationDTO() {
     }
 
-    public LocationDTO(Integer locationId, double longitude, double latitude, String status, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, int dateTime) {
+    public LocationDTO(Integer locationId, double longitude, double latitude, String status, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, String dateTime) {
         this.locationId = locationId;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -94,11 +94,11 @@ public class LocationDTO {
         this.isProcessing = isProcessing;
     }
 
-    public int getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(int dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
     
