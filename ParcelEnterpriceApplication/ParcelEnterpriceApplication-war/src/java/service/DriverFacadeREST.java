@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import uk.co.giovannilenguito.beans.DriverFacadeLocal;
+import uk.co.giovannilenguito.dto.DriverDTO;
 import uk.co.giovannilenguito.entities.Driver;
 
 /**
@@ -25,32 +26,34 @@ import uk.co.giovannilenguito.entities.Driver;
 public class DriverFacadeREST{
 
     @EJB
-    DriverFacadeLocal driverFacadeLocal;
+    private DriverFacadeLocal driverFacadeLocal;
 
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Driver entity) {
+    public void create(DriverDTO dtoObj) {
+        Driver entity = new Driver(dtoObj.getDriverId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName());
         driverFacadeLocal.create(entity);
     }
 
     @PUT
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Driver entity) {
+    public void edit(@PathParam("id") int id, DriverDTO dtoObj) {
+        Driver entity = new Driver(dtoObj.getDriverId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName());
         driverFacadeLocal.edit(entity);
     }
 
     @DELETE
     @Path("delete/{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public void remove(@PathParam("id") int id) {
         driverFacadeLocal.remove(driverFacadeLocal.find(id));
     }
 
     @GET
     @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Driver find(@PathParam("id") Integer id) {
+    public Driver find(@PathParam("id") int id) {
         return driverFacadeLocal.find(id);
     }
 

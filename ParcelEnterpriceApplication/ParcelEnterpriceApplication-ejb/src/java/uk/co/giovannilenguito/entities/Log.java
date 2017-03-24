@@ -47,6 +47,12 @@ public class Log implements Serializable {
         this.logId = logId;
     }
 
+    public Log(Integer logId, String title, String message) {
+        this.logId = logId;
+        this.title = title;
+        this.message = message;
+    }
+    
     public Integer getLogId() {
         return logId;
     }

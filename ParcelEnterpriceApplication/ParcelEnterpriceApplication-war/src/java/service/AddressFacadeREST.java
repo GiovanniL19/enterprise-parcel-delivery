@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import uk.co.giovannilenguito.beans.AddressFacadeLocal;
+import uk.co.giovannilenguito.dto.AddressDTO;
 import uk.co.giovannilenguito.entities.Address;
 
 /**
@@ -29,27 +30,29 @@ public class AddressFacadeREST {
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Address entity) {
+    public void create(AddressDTO dtoObj) {
+        Address entity = new Address(dtoObj.getAddressId(), dtoObj.getLineOne(), dtoObj.getLineTwo(), dtoObj.getCity(), dtoObj.getPostcode(), dtoObj.getCountry());
         addressFacadeLocal.create(entity);
     }
 
     @PUT
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Address entity) {
+    public void edit(@PathParam("id") int id, AddressDTO dtoObj) {
+        Address entity = new Address(dtoObj.getAddressId(), dtoObj.getLineOne(), dtoObj.getLineTwo(), dtoObj.getCity(), dtoObj.getPostcode(), dtoObj.getCountry());
         addressFacadeLocal.edit(entity);
     }
 
     @DELETE
     @Path("delete/{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public void remove(@PathParam("id") int id) {
         addressFacadeLocal.remove(addressFacadeLocal.find(id));
     }
 
     @GET
     @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Address find(@PathParam("id") Integer id) {
+    public Address find(@PathParam("id") int id) {
         return addressFacadeLocal.find(id);
     }
 

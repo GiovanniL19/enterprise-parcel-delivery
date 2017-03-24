@@ -12,11 +12,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.AddressFacadeLocal;
 import uk.co.giovannilenguito.beans.CustomerFacadeLocal;
 import uk.co.giovannilenguito.beans.DriverFacadeLocal;
+import uk.co.giovannilenguito.beans.LocationFacadeLocal;
 import uk.co.giovannilenguito.beans.ParcelFacadeLocal;
+import uk.co.giovannilenguito.dto.ParcelDTO;
+import uk.co.giovannilenguito.entities.Address;
 import uk.co.giovannilenguito.entities.Customer;
 import uk.co.giovannilenguito.entities.Driver;
+import uk.co.giovannilenguito.entities.Location;
 import uk.co.giovannilenguito.entities.Parcel;
 
 /**
@@ -28,25 +33,41 @@ import uk.co.giovannilenguito.entities.Parcel;
 public class ParcelFacadeREST {
     
     @EJB
-    ParcelFacadeLocal parcelFacadeLocal;
-    
+    private ParcelFacadeLocal parcelFacadeLocal;
     @EJB
-    CustomerFacadeLocal customerFacadeLocal;
-    
+    private CustomerFacadeLocal customerFacadeLocal;
     @EJB
-    DriverFacadeLocal driverFacadeLocal;
-
+    private DriverFacadeLocal driverFacadeLocal;
+    @EJB
+    private AddressFacadeLocal addressFacadeLocal;
+    @EJB
+    private LocationFacadeLocal locationFacadeLocal;
+    
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Parcel entity) {
+    public void create(ParcelDTO dtoObj) {
+        Address address = addressFacadeLocal.find(dtoObj.getAddressId());
+        Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
+        Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
+        Location location = locationFacadeLocal.find(dtoObj.getLocationId());
+        
+        Parcel entity = new Parcel(dtoObj.getParcelId(), dtoObj.getServiceType(), dtoObj.getContents(), dtoObj.getDateBooked(), dtoObj.getDeliveryDate(), address, customer, driver, location);
+        
         parcelFacadeLocal.create(entity);
     }
 
     @PUT
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Parcel entity) {
+    public void edit(@PathParam("id") Integer id, ParcelDTO dtoObj) {
+        Address address = addressFacadeLocal.find(dtoObj.getAddressId());
+        Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
+        Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
+        Location location = locationFacadeLocal.find(dtoObj.getLocationId());
+        
+        Parcel entity = new Parcel(dtoObj.getParcelId(), dtoObj.getServiceType(), dtoObj.getContents(), dtoObj.getDateBooked(), dtoObj.getDeliveryDate(), address, customer, driver, location);
+        
         parcelFacadeLocal.edit(entity);
     }
 
@@ -57,25 +78,25 @@ public class ParcelFacadeREST {
     }
 
     @GET
-    @Path("findByCustomer/{customer}")
+    @Path("findByCustomer/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Parcel> findByCustomer(@PathParam("customer") int customer) {
-        Customer foundCustomer = (Customer) customerFacadeLocal.find(customer);
+    public List<Parcel> findByCustomer(@PathParam("customer") int id) {
+        Customer foundCustomer = (Customer) customerFacadeLocal.find(id);
         return parcelFacadeLocal.findByCustomer(foundCustomer);
     }
     
     @GET
-    @Path("findByDriver/{driver}")
+    @Path("findByDriver/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Parcel> findByDriver(@PathParam("driver") int driver) {
-        Driver foundDriver = (Driver) driverFacadeLocal.find(driver);
+    public List<Parcel> findByDriver(@PathParam("driver") int id) {
+        Driver foundDriver = (Driver) driverFacadeLocal.find(id);
         return parcelFacadeLocal.findByDriver(foundDriver);
     }
     
     @GET
     @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Parcel find(@PathParam("id") Integer id) {
+    public Parcel find(@PathParam("id") int id) {
         return parcelFacadeLocal.find(id);
     }
 

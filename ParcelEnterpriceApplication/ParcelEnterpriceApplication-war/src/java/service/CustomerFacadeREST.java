@@ -12,7 +12,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.AddressFacadeLocal;
 import uk.co.giovannilenguito.beans.CustomerFacadeLocal;
+import uk.co.giovannilenguito.dto.CustomerDTO;
+import uk.co.giovannilenguito.entities.Address;
 import uk.co.giovannilenguito.entities.Customer;
 
 /**
@@ -24,32 +27,39 @@ import uk.co.giovannilenguito.entities.Customer;
 public class CustomerFacadeREST{
 
     @EJB
-    CustomerFacadeLocal customerFacadeLocal;
+    private CustomerFacadeLocal customerFacadeLocal;
+    
+    @EJB
+    private AddressFacadeLocal addressFacadeLocal;
     
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Customer entity) {
+    public void create(CustomerDTO dtoObj) {
+        Address address = addressFacadeLocal.find(dtoObj.getAddressId());
+        Customer entity = new Customer(dtoObj.getCustomerId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName(), address);
         customerFacadeLocal.create(entity);
     }
 
     @PUT
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Customer entity) {
+    public void edit(@PathParam("id") int id, CustomerDTO dtoObj) {
+        Address address = addressFacadeLocal.find(dtoObj.getAddressId());
+        Customer entity = new Customer(dtoObj.getCustomerId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName(), address);
         customerFacadeLocal.edit(entity);
     }
 
     @DELETE
     @Path("delete/{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public void remove(@PathParam("id") int id) {
         customerFacadeLocal.remove(customerFacadeLocal.find(id));
     }
 
     @GET
     @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Customer find(@PathParam("id") Integer id) {
+    public Customer find(@PathParam("id") int id) {
         return customerFacadeLocal.find(id);
     }
     

@@ -71,14 +71,13 @@ public class Customer implements Serializable {
         this.customerId = customerId;
     }
 
-    public Customer(Integer customerId, String email, String contactNumber, String username, String password, String fullName, Collection<Parcel> parcelCollection, Address addressId) {
+    public Customer(Integer customerId, String email, String contactNumber, String username, String password, String fullName, Address addressId) {
         this.customerId = customerId;
         this.email = email;
         this.contactNumber = contactNumber;
         this.username = username;
         this.password = password;
         this.fullName = fullName;
-        this.parcelCollection = parcelCollection;
         this.addressId = addressId;
     }
 

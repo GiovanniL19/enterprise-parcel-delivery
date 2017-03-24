@@ -67,18 +67,14 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
-    public Address(Integer addressId, String lineOne, String lineTwo, String city, String postcode, String country, Collection<Parcel> parcelCollection, Collection<Customer> customerCollection) {
+    public Address(Integer addressId, String lineOne, String lineTwo, String city, String postcode, String country) {
         this.addressId = addressId;
         this.lineOne = lineOne;
         this.lineTwo = lineTwo;
         this.city = city;
         this.postcode = postcode;
         this.country = country;
-        this.parcelCollection = parcelCollection;
-        this.customerCollection = customerCollection;
     }
-
-    
     
     public Integer getAddressId() {
         return addressId;

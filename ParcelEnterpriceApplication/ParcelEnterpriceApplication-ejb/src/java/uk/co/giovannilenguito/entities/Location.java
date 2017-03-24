@@ -85,7 +85,7 @@ public class Location implements Serializable {
         this.locationId = locationId;
     }
 
-    public Location(Integer locationId, double longitude, double latitude, String status, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, int dateTime, Collection<Parcel> parcelCollection) {
+    public Location(Integer locationId, double longitude, double latitude, String status, Boolean isDelivered, Boolean isOutForDelivery, Boolean isCollecting, Boolean isProcessing, int dateTime) {
         this.locationId = locationId;
         this.longitude = longitude;
         this.latitude = latitude;
@@ -95,10 +95,7 @@ public class Location implements Serializable {
         this.isCollecting = isCollecting;
         this.isProcessing = isProcessing;
         this.dateTime = dateTime;
-        this.parcelCollection = parcelCollection;
     }
-
-    
 
     public Integer getLocationId() {
         return locationId;

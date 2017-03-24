@@ -66,6 +66,15 @@ public class Driver implements Serializable {
         this.driverId = driverId;
     }
 
+    public Driver(Integer driverId, String email, String contactNumber, String username, String password, String fullName) {
+        this.driverId = driverId;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+    }
+    
     public Integer getDriverId() {
         return driverId;
     }

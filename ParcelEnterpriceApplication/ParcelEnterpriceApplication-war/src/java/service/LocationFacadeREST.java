@@ -13,6 +13,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import uk.co.giovannilenguito.beans.LocationFacadeLocal;
+import uk.co.giovannilenguito.dto.LocationDTO;
 import uk.co.giovannilenguito.entities.Location;
 
 /**
@@ -24,32 +25,34 @@ import uk.co.giovannilenguito.entities.Location;
 public class LocationFacadeREST {
 
     @EJB
-    LocationFacadeLocal locationFacadeLocal;
+    private LocationFacadeLocal locationFacadeLocal;
     
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public int create(Location entity) {
+    public int create(LocationDTO dtoObj) {
+        Location entity = new Location(dtoObj.getLocationId(), dtoObj.getLongitude(), dtoObj.getLatitude(), dtoObj.getStatus(), dtoObj.getIsDelivered(), dtoObj.getIsOutForDelivery(), dtoObj.getIsCollecting(), dtoObj.getIsProcessing(), dtoObj.getDateTime());
         return locationFacadeLocal.createLocation(entity);
     }
 
     @PUT
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void edit(@PathParam("id") Integer id, Location entity) {
+    public void edit(@PathParam("id") int id, LocationDTO dtoObj) {
+        Location entity = new Location(dtoObj.getLocationId(), dtoObj.getLongitude(), dtoObj.getLatitude(), dtoObj.getStatus(), dtoObj.getIsDelivered(), dtoObj.getIsOutForDelivery(), dtoObj.getIsCollecting(), dtoObj.getIsProcessing(), dtoObj.getDateTime());
         locationFacadeLocal.edit(entity);
     }
 
     @DELETE
     @Path("delete/{id}")
-    public void remove(@PathParam("id") Integer id) {
+    public void remove(@PathParam("id") int id) {
         locationFacadeLocal.remove(locationFacadeLocal.find(id));
     }
 
     @GET
     @Path("find/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Location find(@PathParam("id") Integer id) {
+    public Location find(@PathParam("id") int id) {
         return locationFacadeLocal.find(id);
     }
 
