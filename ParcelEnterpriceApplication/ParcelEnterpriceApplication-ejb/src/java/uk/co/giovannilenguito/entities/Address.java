@@ -57,8 +57,6 @@ public class Address implements Serializable {
     private String country;
     @OneToMany(mappedBy = "addressId")
     private Collection<Parcel> parcelCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
-    private Collection<Customer> customerCollection;
 
     public Address() {
     }
@@ -132,16 +130,7 @@ public class Address implements Serializable {
     public void setParcelCollection(Collection<Parcel> parcelCollection) {
         this.parcelCollection = parcelCollection;
     }
-
-    @XmlTransient
-    public Collection<Customer> getCustomerCollection() {
-        return customerCollection;
-    }
-
-    public void setCustomerCollection(Collection<Customer> customerCollection) {
-        this.customerCollection = customerCollection;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
