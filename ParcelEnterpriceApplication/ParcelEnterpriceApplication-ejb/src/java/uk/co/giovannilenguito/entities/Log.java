@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -39,6 +41,12 @@ public class Log implements Serializable {
     @Size(max = 255)
     @Column(name = "MESSAGE")
     private String message;
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
+    @ManyToOne(optional = false)
+    private Customer customerId;
+    @JoinColumn(name = "DRIVER_ID", referencedColumnName = "DRIVER_ID")
+    @ManyToOne(optional = false)
+    private Driver driverId;
 
     public Log() {
     }
@@ -47,10 +55,12 @@ public class Log implements Serializable {
         this.logId = logId;
     }
 
-    public Log(Integer logId, String title, String message) {
+    public Log(Integer logId, String title, String message, Customer customerId, Driver driverId) {
         this.logId = logId;
         this.title = title;
         this.message = message;
+        this.customerId = customerId;
+        this.driverId = driverId;
     }
     
     public Integer getLogId() {
@@ -77,6 +87,22 @@ public class Log implements Serializable {
         this.message = message;
     }
 
+    public Customer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Customer customerId) {
+        this.customerId = customerId;
+    }
+
+    public Driver getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(Driver driverId) {
+        this.driverId = driverId;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -96,7 +122,7 @@ public class Log implements Serializable {
         }
         return true;
     }
-
+    
     @Override
     public String toString() {
         return "uk.co.giovannilenguito.entities.Log[ logId=" + logId + " ]";

@@ -8,14 +8,18 @@ public class LogDTO {
     private Integer logId;
     private String title;
     private String message;
-
+    private int customerId;
+    private int driverId;
+    
     public LogDTO() {
     }
 
-    public LogDTO(Integer logId, String title, String message) {
+    public LogDTO(Integer logId, String title, String message, int customerId, int driverId) {
         this.logId = logId;
         this.title = title;
         this.message = message;
+        this.customerId = customerId;
+        this.driverId = driverId;
     }
 
     public Integer getLogId() {
@@ -41,6 +45,21 @@ public class LogDTO {
     public void setMessage(String message) {
         this.message = message;
     }
-    
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getDriverId() {
+        return driverId;
+    }
+
+    public void setDriverId(int driverId) {
+        this.driverId = driverId;
+    }
     
 }

@@ -12,8 +12,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import uk.co.giovannilenguito.beans.CustomerFacadeLocal;
+import uk.co.giovannilenguito.beans.DriverFacadeLocal;
 import uk.co.giovannilenguito.beans.LogFacadeLocal;
 import uk.co.giovannilenguito.dto.LogDTO;
+import uk.co.giovannilenguito.entities.Customer;
+import uk.co.giovannilenguito.entities.Driver;
 import uk.co.giovannilenguito.entities.Log;
 
 /**
@@ -26,12 +30,19 @@ public class LogFacadeREST {
 
     @EJB
     private LogFacadeLocal logFacadeLocal;
+    @EJB
+    private CustomerFacadeLocal customerFacadeLocal;
+    @EJB
+    private DriverFacadeLocal driverFacadeLocal;
     
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(LogDTO dtoObj) {
-        Log entity = new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage());
+        Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
+        Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
+        
+        Log entity = new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage(), customer, driver);
         logFacadeLocal.create(entity);
     }
 
@@ -39,7 +50,10 @@ public class LogFacadeREST {
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, LogDTO dtoObj) {
-        Log entity = new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage());
+        Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
+        Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
+        
+        Log entity = new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage(), customer, driver);
         logFacadeLocal.edit(entity);
     }
 
