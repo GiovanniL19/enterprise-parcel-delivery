@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uk.co.giovannilenguito.entities;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,126 +17,152 @@ public class DriverIT {
 
     @Test
     public void testGetDriverId() {
-        System.out.println("getDriverId");
         Driver instance = new Driver();
-        Integer expResult = null;
+        instance.setDriverId(3);
+        
+        Integer expResult = 3;
         Integer result = instance.getDriverId();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetDriverId() {
-        System.out.println("setDriverId");
-        Integer driverId = null;
         Driver instance = new Driver();
-        instance.setDriverId(driverId);
+        instance.setDriverId(3);
+        
+        Integer expResult = 3;
+        Integer result = instance.getDriverId();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetEmail() {
-        System.out.println("getEmail");
         Driver instance = new Driver();
-        String expResult = null;
+        instance.setEmail("driver@email.com");
+        
+        String expResult = "driver@email.com";
         String result = instance.getEmail();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetEmail() {
-        System.out.println("setEmail");
-        String email = null;
         Driver instance = new Driver();
-        instance.setEmail(email);
+        instance.setEmail("driver@email.com");
+        
+        String expResult = "driver@email.com";
+        String result = instance.getEmail();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetContactNumber() {
-        System.out.println("getContactNumber");
         Driver instance = new Driver();
-        String expResult = null;
+        instance.setContactNumber("0123456789");
+        
+        String expResult = "0123456789";
         String result = instance.getContactNumber();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetContactNumber() {
-        System.out.println("setContactNumber");
-        String contactNumber = null;
         Driver instance = new Driver();
-        instance.setContactNumber(contactNumber);
+        instance.setContactNumber("0123456789");
+        
+        String expResult = "0123456789";
+        String result = instance.getContactNumber();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetUsername() {
-        System.out.println("getUsername");
         Driver instance = new Driver();
-        String expResult = null;
+        instance.setUsername("UserName");
+        
+        String expResult = "UserName";
         String result = instance.getUsername();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetUsername() {
-        System.out.println("setUsername");
-        String username = null;
         Driver instance = new Driver();
-        instance.setUsername(username);
+        instance.setUsername("UserName");
+        
+        String expResult = "UserName";
+        String result = instance.getUsername();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetPassword() {
-        System.out.println("getPassword");
         Driver instance = new Driver();
-        String expResult = null;
+        instance.setPassword("123");
+        
+        String expResult = "123";
         String result = instance.getPassword();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetPassword() {
-        System.out.println("setPassword");
-        String password = null;
         Driver instance = new Driver();
-        instance.setPassword(password);
+        instance.setPassword("123");
+        
+        String expResult = "123";
+        String result = instance.getPassword();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetFullName() {
-        System.out.println("getFullName");
         Driver instance = new Driver();
-        String expResult = null;
+        instance.setFullName("Full Name");
+        
+        String expResult = "Full Name";
         String result = instance.getFullName();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetFullName() {
-        System.out.println("setFullName");
-        String fullName = null;
         Driver instance = new Driver();
-        instance.setFullName(fullName);
+        instance.setFullName("Full Name");
+        
+        String expResult = "Full Name";
+        String result = instance.getFullName();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetParcelCollection() {
-        System.out.println("getParcelCollection");
-        Driver instance = new Driver();
-        Collection<Parcel> expResult = null;
+        Customer instance = new Customer();
+        List<Parcel> list = new ArrayList();
+        list.add(new Parcel());
+        
+        instance.setParcelCollection(list);
+        
+        Collection<Parcel> expResult = list;
         Collection<Parcel> result = instance.getParcelCollection();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetParcelCollection() {
-        System.out.println("setParcelCollection");
-        Collection<Parcel> parcelCollection = null;
-        Driver instance = new Driver();
-        instance.setParcelCollection(parcelCollection);
+        Customer instance = new Customer();
+        List<Parcel> list = new ArrayList();
+        list.add(new Parcel());
+        
+        instance.setParcelCollection(list);
+        
+        Collection<Parcel> expResult = list;
+        Collection<Parcel> result = instance.getParcelCollection();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testHashCode() {
-        System.out.println("hashCode");
         Driver instance = new Driver();
         int expResult = 0;
         int result = instance.hashCode();
@@ -148,7 +171,6 @@ public class DriverIT {
 
     @Test
     public void testEquals() {
-        System.out.println("equals");
         Object object = null;
         Driver instance = new Driver();
         boolean expResult = false;
@@ -158,7 +180,6 @@ public class DriverIT {
 
     @Test
     public void testToString() {
-        System.out.println("toString");
         Driver instance = new Driver();
         String expResult = "uk.co.giovannilenguito.entities.Driver[ driverId=" + null + " ]";
         String result = instance.toString();

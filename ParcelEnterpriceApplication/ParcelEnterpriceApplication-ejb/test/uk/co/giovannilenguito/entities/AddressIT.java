@@ -1,6 +1,8 @@
 package uk.co.giovannilenguito.entities;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,126 +17,140 @@ public class AddressIT {
 
     @Test
     public void testGetAddressId() {
-        System.out.println("getAddressId");
         Address instance = new Address();
-        Integer expResult = null;
+        instance.setAddressId(1);
+        Integer expResult = 1;
         Integer result = instance.getAddressId();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetAddressId() {
-        System.out.println("setAddressId");
-        Integer addressId = null;
         Address instance = new Address();
-        instance.setAddressId(addressId);
+        instance.setAddressId(1);
+        Integer expResult = 1;
+        Integer result = instance.getAddressId();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetLineOne() {
-        System.out.println("getLineOne");
         Address instance = new Address();
-        String expResult = null;
+        instance.setLineOne("Line One");
+        String expResult = "Line One";
         String result = instance.getLineOne();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetLineOne() {
-        System.out.println("setLineOne");
-        String lineOne = null;
         Address instance = new Address();
-        instance.setLineOne(lineOne);
+        instance.setLineOne("Line One");
+        String expResult = "Line One";
+        String result = instance.getLineOne();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetLineTwo() {
-        System.out.println("getLineTwo");
         Address instance = new Address();
-        String expResult = null;
+        instance.setLineTwo("Line Two");
+        String expResult = "Line Two";
         String result = instance.getLineTwo();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetLineTwo() {
-        System.out.println("setLineTwo");
-        String lineTwo = null;
         Address instance = new Address();
-        instance.setLineTwo(lineTwo);
+        instance.setLineTwo("Line Two");
+        String expResult = "Line Two";
+        String result = instance.getLineTwo();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetCity() {
-        System.out.println("getCity");
         Address instance = new Address();
-        String expResult = null;
+        instance.setCity("City");
+        String expResult = "City";
         String result = instance.getCity();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetCity() {
-        System.out.println("setCity");
-        String city = null;
         Address instance = new Address();
-        instance.setCity(city);
+        instance.setCity("City");
+        String expResult = "City";
+        String result = instance.getCity();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetPostcode() {
-        System.out.println("getPostcode");
         Address instance = new Address();
-        String expResult = null;
+        instance.setPostcode("Postcode");
+        String expResult = "Postcode";
         String result = instance.getPostcode();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetPostcode() {
-        System.out.println("setPostcode");
-        String postcode = null;
         Address instance = new Address();
-        instance.setPostcode(postcode);
+        instance.setPostcode("Postcode");
+        String expResult = "Postcode";
+        String result = instance.getPostcode();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetCountry() {
-        System.out.println("getCountry");
         Address instance = new Address();
-        String expResult = null;
+        instance.setCountry("Country");
+        String expResult = "Country";
         String result = instance.getCountry();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetCountry() {
-        System.out.println("setCountry");
-        String country = null;
         Address instance = new Address();
-        instance.setCountry(country);
+        instance.setCountry("Country");
+        String expResult = "Country";
+        String result = instance.getCountry();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetParcelCollection() {
-        System.out.println("getParcelCollection");
         Address instance = new Address();
-        Collection<Parcel> expResult = null;
+        List<Parcel> list = new ArrayList();
+        list.add(new Parcel());
+        
+        instance.setParcelCollection(list);
+        
+        Collection<Parcel> expResult = list;
         Collection<Parcel> result = instance.getParcelCollection();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetParcelCollection() {
-        System.out.println("setParcelCollection");
-        Collection<Parcel> parcelCollection = null;
         Address instance = new Address();
-        instance.setParcelCollection(parcelCollection);
+        List<Parcel> list = new ArrayList();
+        list.add(new Parcel());
+        
+        instance.setParcelCollection(list);
+        
+        Collection<Parcel> expResult = list;
+        Collection<Parcel> result = instance.getParcelCollection();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testHashCode() {
-        System.out.println("hashCode");
         Address instance = new Address();
         int expResult = 0;
         int result = instance.hashCode();
@@ -143,7 +159,6 @@ public class AddressIT {
 
     @Test
     public void testEquals() {
-        System.out.println("equals");
         Object object = null;
         Address instance = new Address();
         boolean expResult = false;
@@ -153,7 +168,6 @@ public class AddressIT {
 
     @Test
     public void testToString() {
-        System.out.println("toString");
         Address instance = new Address();
         String expResult = "uk.co.giovannilenguito.entities.Address[ addressId=" + null + " ]";
         String result = instance.toString();
