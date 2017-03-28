@@ -14,53 +14,57 @@ public class LogDTOIT {
 
     @Test
     public void testGetLogId() {
-        System.out.println("getLogId");
         LogDTO instance = new LogDTO();
-        Integer expResult = null;
+        instance.setLogId(5);
+        Integer expResult = 5;
         Integer result = instance.getLogId();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetLogId() {
-        System.out.println("setLogId");
-        Integer logId = null;
         LogDTO instance = new LogDTO();
-        instance.setLogId(logId);
+        instance.setLogId(5);
+        Integer expResult = 5;
+        Integer result = instance.getLogId();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetTitle() {
-        System.out.println("getTitle");
         LogDTO instance = new LogDTO();
-        String expResult = null;
+        instance.setTitle("Title");
+        String expResult = "Title";
         String result = instance.getTitle();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetTitle() {
-        System.out.println("setTitle");
-        String title = null;
         LogDTO instance = new LogDTO();
-        instance.setTitle(title);
-    }
-
-    @Test
-    public void testGetMessage() {
-        System.out.println("getMessage");
-        LogDTO instance = new LogDTO();
-        String expResult = null;
-        String result = instance.getMessage();
+        instance.setTitle("Title");
+        String expResult = "Title";
+        String result = instance.getTitle();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testSetMessage() {
-        System.out.println("setMessage");
-        String message = null;
+    public void testGetMessage() {
         LogDTO instance = new LogDTO();
-        instance.setMessage(message);
+        instance.setMessage("Message");
+        String expResult = "Message";
+        String result = instance.getMessage();
+        assertEquals(expResult, result);
+
+    }
+
+    @Test
+    public void testSetMessage() {
+        LogDTO instance = new LogDTO();
+        instance.setMessage("Message");
+        String expResult = "Message";
+        String result = instance.getMessage();
+        assertEquals(expResult, result);
     }
     
 }

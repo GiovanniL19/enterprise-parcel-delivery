@@ -14,155 +14,171 @@ public class LocationDTOIT {
 
     @Test
     public void testGetLocationId() {
-        System.out.println("getLocationId");
         LocationDTO instance = new LocationDTO();
-        Integer expResult = null;
+        instance.setLocationId(4);
+        
+        Integer expResult = 4;
         Integer result = instance.getLocationId();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetLocationId() {
-        System.out.println("setLocationId");
-        Integer locationId = null;
         LocationDTO instance = new LocationDTO();
-        instance.setLocationId(locationId);
+        instance.setLocationId(4);
+        
+        Integer expResult = 4;
+        Integer result = instance.getLocationId();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetLongitude() {
-        System.out.println("getLongitude");
         LocationDTO instance = new LocationDTO();
-        double expResult = 0.0;
+        instance.setLongitude(32323);
+        
+        double expResult = 32323;
         double result = instance.getLongitude();
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 32323);
     }
 
     @Test
     public void testSetLongitude() {
-        System.out.println("setLongitude");
-        double longitude = 0.0;
         LocationDTO instance = new LocationDTO();
-        instance.setLongitude(longitude);
+        instance.setLongitude(32323);
+        
+        double expResult = 32323;
+        double result = instance.getLongitude();
+        assertEquals(expResult, result, 32323);
     }
 
     @Test
     public void testGetLatitude() {
-        System.out.println("getLatitude");
         LocationDTO instance = new LocationDTO();
-        double expResult = 0.0;
+        instance.setLatitude(32322323);
+        
+        double expResult = 32323;
         double result = instance.getLatitude();
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 32322323);
     }
 
     @Test
     public void testSetLatitude() {
-        System.out.println("setLatitude");
-        double latitude = 0.0;
         LocationDTO instance = new LocationDTO();
-        instance.setLatitude(latitude);
+        instance.setLatitude(32322323);
+        
+        double expResult = 32323;
+        double result = instance.getLatitude();
+        assertEquals(expResult, result, 32322323);
+
     }
 
     @Test
     public void testGetStatus() {
-        System.out.println("getStatus");
         LocationDTO instance = new LocationDTO();
-        String expResult = null;
+        instance.setStatus("OK");
+        String expResult = "OK";
         String result = instance.getStatus();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetStatus() {
-        System.out.println("setStatus");
-        String status = null;
         LocationDTO instance = new LocationDTO();
-        instance.setStatus(status);
+        instance.setStatus("OK");
+        String expResult = "OK";
+        String result = instance.getStatus();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetIsDelivered() {
-        System.out.println("getIsDelivered");
         LocationDTO instance = new LocationDTO();
-        Boolean expResult = null;
+        instance.setIsDelivered(false);
+        Boolean expResult = false;
         Boolean result = instance.getIsDelivered();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetIsDelivered() {
-        System.out.println("setIsDelivered");
-        Boolean isDelivered = null;
         LocationDTO instance = new LocationDTO();
-        instance.setIsDelivered(isDelivered);
+        instance.setIsDelivered(false);
+        Boolean expResult = false;
+        Boolean result = instance.getIsDelivered();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetIsOutForDelivery() {
-        System.out.println("getIsOutForDelivery");
         LocationDTO instance = new LocationDTO();
-        Boolean expResult = null;
+        instance.setIsOutForDelivery(false);
+        Boolean expResult = false;
         Boolean result = instance.getIsOutForDelivery();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetIsOutForDelivery() {
-        System.out.println("setIsOutForDelivery");
-        Boolean isOutForDelivery = null;
         LocationDTO instance = new LocationDTO();
-        instance.setIsOutForDelivery(isOutForDelivery);
+        instance.setIsOutForDelivery(false);
+        Boolean expResult = false;
+        Boolean result = instance.getIsOutForDelivery();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetIsCollecting() {
-        System.out.println("getIsCollecting");
         LocationDTO instance = new LocationDTO();
-        Boolean expResult = null;
+        instance.setIsCollecting(false);
+        Boolean expResult = false;
         Boolean result = instance.getIsCollecting();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetIsCollecting() {
-        System.out.println("setIsCollecting");
-        Boolean isCollecting = null;
         LocationDTO instance = new LocationDTO();
-        instance.setIsCollecting(isCollecting);
+        instance.setIsCollecting(false);
+        Boolean expResult = false;
+        Boolean result = instance.getIsCollecting();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetIsProcessing() {
-        System.out.println("getIsProcessing");
         LocationDTO instance = new LocationDTO();
-        Boolean expResult = null;
+        instance.setIsProcessing(true);
+        Boolean expResult = true;
         Boolean result = instance.getIsProcessing();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetIsProcessing() {
-        System.out.println("setIsProcessing");
-        Boolean isProcessing = null;
         LocationDTO instance = new LocationDTO();
-        instance.setIsProcessing(isProcessing);
+        instance.setIsProcessing(true);
+        Boolean expResult = true;
+        Boolean result = instance.getIsProcessing();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetDateTime() {
-        System.out.println("getDateTime");
         LocationDTO instance = new LocationDTO();
-        String expResult = null;
+        instance.setDateTime("Tuesday 25th April 2017");
+        String expResult = "Tuesday 25th April 2017";
         String result = instance.getDateTime();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetDateTime() {
-        System.out.println("setDateTime");
-        String dateTime = null;
         LocationDTO instance = new LocationDTO();
-        instance.setDateTime(dateTime);
+        instance.setDateTime("Tuesday 25th April 2017");
+        String expResult = "Tuesday 25th April 2017";
+        String result = instance.getDateTime();
+        assertEquals(expResult, result);
     }
     
 }

@@ -14,121 +14,128 @@ public class CustomerDTOIT {
 
     @Test
     public void testGetCustomerId() {
-        System.out.println("getCustomerId");
         CustomerDTO instance = new CustomerDTO();
-        Integer expResult = null;
+        instance.setCustomerId(1);
+        Integer expResult = 1;
         Integer result = instance.getCustomerId();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetCustomerId() {
-        System.out.println("setCustomerId");
-        Integer customerId = null;
         CustomerDTO instance = new CustomerDTO();
-        instance.setCustomerId(customerId);
+        instance.setCustomerId(1);
+        Integer expResult = 1;
+        Integer result = instance.getCustomerId();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetEmail() {
-        System.out.println("getEmail");
         CustomerDTO instance = new CustomerDTO();
-        String expResult = null;
+        instance.setEmail("email@example.com");
+        String expResult = "email@example.com";
         String result = instance.getEmail();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetEmail() {
-        System.out.println("setEmail");
-        String email = null;
         CustomerDTO instance = new CustomerDTO();
-        instance.setEmail(email);
+        instance.setEmail("email@example.com");
+        String expResult = "email@example.com";
+        String result = instance.getEmail();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetContactNumber() {
-        System.out.println("getContactNumber");
         CustomerDTO instance = new CustomerDTO();
-        String expResult = null;
+        instance.setContactNumber("0123456789");
+        String expResult = "0123456789";
         String result = instance.getContactNumber();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetContactNumber() {
-        System.out.println("setContactNumber");
-        String contactNumber = null;
         CustomerDTO instance = new CustomerDTO();
-        instance.setContactNumber(contactNumber);
+        instance.setContactNumber("0123456789");
+        String expResult = "0123456789";
+        String result = instance.getContactNumber();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetUsername() {
-        System.out.println("getUsername");
         CustomerDTO instance = new CustomerDTO();
-        String expResult = null;
+        instance.setUsername("UserName");
+        String expResult = "UserName";
         String result = instance.getUsername();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetUsername() {
-        System.out.println("setUsername");
-        String username = null;
         CustomerDTO instance = new CustomerDTO();
-        instance.setUsername(username);
+        instance.setUsername("UserName");
+        String expResult = "UserName";
+        String result = instance.getUsername();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetPassword() {
-        System.out.println("getPassword");
         CustomerDTO instance = new CustomerDTO();
-        String expResult = null;
+        instance.setPassword("123");
+        String expResult = "123";
         String result = instance.getPassword();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetPassword() {
-        System.out.println("setPassword");
-        String password = null;
         CustomerDTO instance = new CustomerDTO();
-        instance.setPassword(password);
+        instance.setPassword("123");
+        String expResult = "123";
+        String result = instance.getPassword();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetFullName() {
-        System.out.println("getFullName");
         CustomerDTO instance = new CustomerDTO();
-        String expResult = null;
+        instance.setFullName("Full Name");
+        String expResult = "Full Name";
         String result = instance.getFullName();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetFullName() {
-        System.out.println("setFullName");
-        String fullName = null;
         CustomerDTO instance = new CustomerDTO();
-        instance.setFullName(fullName);
+        instance.setFullName("Full Name");
+        String expResult = "Full Name";
+        String result = instance.getFullName();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetAddressId() {
-        System.out.println("getAddressId");
         CustomerDTO instance = new CustomerDTO();
-        int expResult = 0;
+        instance.setAddressId(2);
+        int expResult = 2;
         int result = instance.getAddressId();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetAddressId() {
-        System.out.println("setAddressId");
-        int addressId = 0;
         CustomerDTO instance = new CustomerDTO();
-        instance.setAddressId(addressId);
+        instance.setAddressId(2);
+        int expResult = 2;
+        int result = instance.getAddressId();
+        assertEquals(expResult, result);
     }
     
 }

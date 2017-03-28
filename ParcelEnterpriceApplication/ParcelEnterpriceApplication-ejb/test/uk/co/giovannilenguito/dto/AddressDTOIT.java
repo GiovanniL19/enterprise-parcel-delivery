@@ -14,104 +14,110 @@ public class AddressDTOIT {
 
     @Test
     public void testGetAddressId() {
-        System.out.println("getAddressId");
         AddressDTO instance = new AddressDTO();
-        Integer expResult = null;
+        instance.setAddressId(1);
+        Integer expResult = 1;
         Integer result = instance.getAddressId();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetAddressId() {
-        System.out.println("setAddressId");
-        Integer addressId = null;
         AddressDTO instance = new AddressDTO();
-        instance.setAddressId(addressId);
+        instance.setAddressId(1);
+        Integer expResult = 1;
+        Integer result = instance.getAddressId();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetLineOne() {
-        System.out.println("getLineOne");
         AddressDTO instance = new AddressDTO();
-        String expResult = null;
+        instance.setLineOne("Line One");
+        String expResult = "Line One";
         String result = instance.getLineOne();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetLineOne() {
-        System.out.println("setLineOne");
-        String lineOne = "";
         AddressDTO instance = new AddressDTO();
-        instance.setLineOne(lineOne);
+        instance.setLineOne("Line One");
+        String expResult = "Line One";
+        String result = instance.getLineOne();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetLineTwo() {
-        System.out.println("getLineTwo");
         AddressDTO instance = new AddressDTO();
-        String expResult = null;
+        instance.setLineTwo("Line Two");
+        String expResult = "Line Two";
         String result = instance.getLineTwo();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetLineTwo() {
-        System.out.println("setLineTwo");
-        String lineTwo = "";
         AddressDTO instance = new AddressDTO();
-        instance.setLineTwo(lineTwo);
+        instance.setLineTwo("Line Two");
+        String expResult = "Line Two";
+        String result = instance.getLineTwo();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetCity() {
-        System.out.println("getCity");
         AddressDTO instance = new AddressDTO();
-        String expResult = null;
+        instance.setCity("City");
+        String expResult = "City";
         String result = instance.getCity();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetCity() {
-        System.out.println("setCity");
-        String city = "";
         AddressDTO instance = new AddressDTO();
-        instance.setCity(city);
+        instance.setCity("City");
+        String expResult = "City";
+        String result = instance.getCity();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetPostcode() {
-        System.out.println("getPostcode");
         AddressDTO instance = new AddressDTO();
-        String expResult = null;
+        instance.setPostcode("Postcode");
+        String expResult = "Postcode";
         String result = instance.getPostcode();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetPostcode() {
-        System.out.println("setPostcode");
-        String postcode = "";
         AddressDTO instance = new AddressDTO();
-        instance.setPostcode(postcode);
+        instance.setPostcode("Postcode");
+        String expResult = "Postcode";
+        String result = instance.getPostcode();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetCountry() {
-        System.out.println("getCountry");
         AddressDTO instance = new AddressDTO();
-        String expResult = null;
+        instance.setCountry("Country");
+        String expResult = "Country";
         String result = instance.getCountry();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetCountry() {
-        System.out.println("setCountry");
-        String country = "";
         AddressDTO instance = new AddressDTO();
-        instance.setCountry(country);
+        instance.setCountry("Country");
+        String expResult = "Country";
+        String result = instance.getCountry();
+        assertEquals(expResult, result);
     }
     
 }

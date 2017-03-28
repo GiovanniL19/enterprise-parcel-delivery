@@ -13,105 +13,123 @@ public class DriverDTOIT {
     }
 
     @Test
-    public void testGetDriverId() {
-        System.out.println("getDriverId");
+    public void testGetDriverDTOId() {
         DriverDTO instance = new DriverDTO();
-        Integer expResult = null;
+        instance.setDriverId(3);
+        
+        Integer expResult = 3;
         Integer result = instance.getDriverId();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testSetDriverId() {
-        System.out.println("setDriverId");
-        Integer driverId = null;
+    public void testSetDriverDTOId() {
         DriverDTO instance = new DriverDTO();
-        instance.setDriverId(driverId);
+        instance.setDriverId(3);
+        
+        Integer expResult = 3;
+        Integer result = instance.getDriverId();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetEmail() {
-        System.out.println("getEmail");
         DriverDTO instance = new DriverDTO();
-        String expResult = null;
+        instance.setEmail("DriverDTO@email.com");
+        
+        String expResult = "DriverDTO@email.com";
         String result = instance.getEmail();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetEmail() {
-        System.out.println("setEmail");
-        String email = null;
         DriverDTO instance = new DriverDTO();
-        instance.setEmail(email);
+        instance.setEmail("DriverDTO@email.com");
+        
+        String expResult = "DriverDTO@email.com";
+        String result = instance.getEmail();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetContactNumber() {
-        System.out.println("getContactNumber");
         DriverDTO instance = new DriverDTO();
-        String expResult = null;
+        instance.setContactNumber("0123456789");
+        
+        String expResult = "0123456789";
         String result = instance.getContactNumber();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetContactNumber() {
-        System.out.println("setContactNumber");
-        String contactNumber = null;
         DriverDTO instance = new DriverDTO();
-        instance.setContactNumber(contactNumber);
+        instance.setContactNumber("0123456789");
+        
+        String expResult = "0123456789";
+        String result = instance.getContactNumber();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetUsername() {
-        System.out.println("getUsername");
         DriverDTO instance = new DriverDTO();
-        String expResult = null;
+        instance.setUsername("UserName");
+        
+        String expResult = "UserName";
         String result = instance.getUsername();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetUsername() {
-        System.out.println("setUsername");
-        String username = null;
         DriverDTO instance = new DriverDTO();
-        instance.setUsername(username);
+        instance.setUsername("UserName");
+        
+        String expResult = "UserName";
+        String result = instance.getUsername();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetPassword() {
-        System.out.println("getPassword");
         DriverDTO instance = new DriverDTO();
-        String expResult = null;
+        instance.setPassword("123");
+        
+        String expResult = "123";
         String result = instance.getPassword();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetPassword() {
-        System.out.println("setPassword");
-        String password = null;
         DriverDTO instance = new DriverDTO();
-        instance.setPassword(password);
+        instance.setPassword("123");
+        
+        String expResult = "123";
+        String result = instance.getPassword();
+        assertEquals(expResult, result);
     }
 
     @Test
     public void testGetFullName() {
-        System.out.println("getFullName");
         DriverDTO instance = new DriverDTO();
-        String expResult = null;
+        instance.setFullName("Full Name");
+        
+        String expResult = "Full Name";
         String result = instance.getFullName();
         assertEquals(expResult, result);
     }
 
     @Test
     public void testSetFullName() {
-        System.out.println("setFullName");
-        String fullName = null;
         DriverDTO instance = new DriverDTO();
-        instance.setFullName(fullName);
+        instance.setFullName("Full Name");
+        
+        String expResult = "Full Name";
+        String result = instance.getFullName();
+        assertEquals(expResult, result);
     }
     
 }
