@@ -3,11 +3,13 @@ import uk.co.giovannilenguito.dto.AddressDTO;
 import uk.co.giovannilenguito.dto.CustomerDTO;
 import uk.co.giovannilenguito.dto.DriverDTO;
 import uk.co.giovannilenguito.dto.LocationDTO;
+import uk.co.giovannilenguito.dto.LogDTO;
 import uk.co.giovannilenguito.dto.ParcelDTO;
 import uk.co.giovannilenguito.entities.Address;
 import uk.co.giovannilenguito.entities.Customer;
 import uk.co.giovannilenguito.entities.Driver;
 import uk.co.giovannilenguito.entities.Location;
+import uk.co.giovannilenguito.entities.Log;
 import uk.co.giovannilenguito.entities.Parcel;
 
 /**
@@ -45,6 +47,10 @@ public class ParserFactory {
     
     public Parcel ParcelToEntity(ParcelDTO dtoObj, Address address, Customer customer, Driver driver, Location location){
         return new Parcel(dtoObj.getParcelId(), dtoObj.getServiceType(), dtoObj.getContents(), dtoObj.getDateBooked(), dtoObj.getDeliveryDate(), address, customer, driver, location);
+    }
+    
+    public Log LogToEntity(LogDTO dtoObj, Customer customer, Driver driver){
+        return new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage(), customer, driver);
     }
     
 }

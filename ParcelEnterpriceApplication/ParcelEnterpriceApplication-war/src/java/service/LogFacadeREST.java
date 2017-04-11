@@ -1,5 +1,6 @@
 package service;
 
+import factory.ParserFactory;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -12,6 +13,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import messaging.Receiver;
+import messaging.Sender;
 import uk.co.giovannilenguito.beans.CustomerFacadeLocal;
 import uk.co.giovannilenguito.beans.DriverFacadeLocal;
 import uk.co.giovannilenguito.beans.LogFacadeLocal;
@@ -28,12 +31,27 @@ import uk.co.giovannilenguito.entities.Log;
 @Path("logs")
 public class LogFacadeREST {
 
+    @EJB Sender sender;
+    @EJB Receiver receiver;
+    
     @EJB
     private LogFacadeLocal logFacadeLocal;
     @EJB
     private CustomerFacadeLocal customerFacadeLocal;
     @EJB
     private DriverFacadeLocal driverFacadeLocal;
+    
+    @GET
+    @Path("message")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String messageSendAndReciece() {
+        String message = "Hello World, this is JMS";
+        sender.send(message);
+        
+        String messageReceived = receiver.receive();
+        
+        return messageReceived;
+    }
     
     @POST
     @Path("new")
@@ -42,7 +60,8 @@ public class LogFacadeREST {
         Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
         
-        Log entity = new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage(), customer, driver);
+        ParserFactory parser = ParserFactory.getInstance();
+        Log entity = parser.LogToEntity(dtoObj, customer, driver);
         logFacadeLocal.create(entity);
     }
 
@@ -53,7 +72,8 @@ public class LogFacadeREST {
         Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
         
-        Log entity = new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage(), customer, driver);
+        ParserFactory parser = ParserFactory.getInstance();
+        Log entity = parser.LogToEntity(dtoObj, customer, driver);
         logFacadeLocal.edit(entity);
     }
 
