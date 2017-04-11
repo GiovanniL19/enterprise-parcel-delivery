@@ -1,5 +1,6 @@
 package service;
 
+import factory.ParserFactory;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -31,7 +32,8 @@ public class AddressFacadeREST {
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
     public int create(AddressDTO dtoObj) {
-        Address entity = new Address(dtoObj.getAddressId(), dtoObj.getLineOne(), dtoObj.getLineTwo(), dtoObj.getCity(), dtoObj.getPostcode(), dtoObj.getCountry());
+        ParserFactory parser = ParserFactory.getInstance();
+        Address entity = parser.AddressToEntity(dtoObj);
         return addressFacadeLocal.createAddress(entity);
     }
 
@@ -39,7 +41,8 @@ public class AddressFacadeREST {
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, AddressDTO dtoObj) {
-        Address entity = new Address(dtoObj.getAddressId(), dtoObj.getLineOne(), dtoObj.getLineTwo(), dtoObj.getCity(), dtoObj.getPostcode(), dtoObj.getCountry());
+        ParserFactory parser = ParserFactory.getInstance();
+        Address entity = parser.AddressToEntity(dtoObj);
         addressFacadeLocal.edit(entity);
     }
 

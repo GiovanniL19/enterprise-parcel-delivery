@@ -1,5 +1,6 @@
 package service;
 
+import factory.ParserFactory;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -37,7 +38,8 @@ public class CustomerFacadeREST{
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(CustomerDTO dtoObj) {
         Address address = addressFacadeLocal.find(dtoObj.getAddressId());
-        Customer entity = new Customer(dtoObj.getCustomerId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName(), address);
+        ParserFactory parser = ParserFactory.getInstance();
+        Customer entity = parser.CustomerToEntity(dtoObj, address);
         customerFacadeLocal.create(entity);
     }
 
@@ -46,7 +48,8 @@ public class CustomerFacadeREST{
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, CustomerDTO dtoObj) {
         Address address = addressFacadeLocal.find(dtoObj.getAddressId());
-        Customer entity = new Customer(dtoObj.getCustomerId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName(), address);
+        ParserFactory parser = ParserFactory.getInstance();
+        Customer entity = parser.CustomerToEntity(dtoObj, address);
         customerFacadeLocal.edit(entity);
     }
 

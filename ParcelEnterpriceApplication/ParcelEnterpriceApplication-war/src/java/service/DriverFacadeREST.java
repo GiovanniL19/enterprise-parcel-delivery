@@ -1,5 +1,6 @@
 package service;
 
+import factory.ParserFactory;
 import java.util.List;
 import java.util.Random;
 import javax.ejb.EJB;
@@ -32,7 +33,8 @@ public class DriverFacadeREST{
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(DriverDTO dtoObj) {
-        Driver entity = new Driver(dtoObj.getDriverId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName());
+        ParserFactory parser = ParserFactory.getInstance();
+        Driver entity = parser.DriverToEntity(dtoObj);
         driverFacadeLocal.create(entity);
     }
 
@@ -40,7 +42,8 @@ public class DriverFacadeREST{
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, DriverDTO dtoObj) {
-        Driver entity = new Driver(dtoObj.getDriverId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName());
+        ParserFactory parser = ParserFactory.getInstance();
+        Driver entity = parser.DriverToEntity(dtoObj);
         driverFacadeLocal.edit(entity);
     }
 

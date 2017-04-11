@@ -1,5 +1,6 @@
 package service;
 
+import factory.ParserFactory;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -52,8 +53,8 @@ public class ParcelFacadeREST {
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
         Location location = locationFacadeLocal.find(dtoObj.getLocationId());
         
-        Parcel entity = new Parcel(dtoObj.getParcelId(), dtoObj.getServiceType(), dtoObj.getContents(), dtoObj.getDateBooked(), dtoObj.getDeliveryDate(), address, customer, driver, location);
-        
+        ParserFactory parser = ParserFactory.getInstance();
+        Parcel entity = parser.ParcelToEntity(dtoObj, address, customer, driver, location);
         parcelFacadeLocal.create(entity);
     }
 
@@ -66,8 +67,8 @@ public class ParcelFacadeREST {
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
         Location location = locationFacadeLocal.find(dtoObj.getLocationId());
         
-        Parcel entity = new Parcel(dtoObj.getParcelId(), dtoObj.getServiceType(), dtoObj.getContents(), dtoObj.getDateBooked(), dtoObj.getDeliveryDate(), address, customer, driver, location);
-        
+        ParserFactory parser = ParserFactory.getInstance();
+        Parcel entity = parser.ParcelToEntity(dtoObj, address, customer, driver, location);
         parcelFacadeLocal.edit(entity);
     }
 

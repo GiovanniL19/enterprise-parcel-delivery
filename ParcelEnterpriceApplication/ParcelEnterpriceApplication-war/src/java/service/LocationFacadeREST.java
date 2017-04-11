@@ -1,5 +1,6 @@
 package service;
 
+import factory.ParserFactory;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -31,7 +32,8 @@ public class LocationFacadeREST {
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
     public int create(LocationDTO dtoObj) {
-        Location entity = new Location(dtoObj.getLocationId(), dtoObj.getLongitude(), dtoObj.getLatitude(), dtoObj.getStatus(), dtoObj.getIsDelivered(), dtoObj.getIsOutForDelivery(), dtoObj.getIsCollecting(), dtoObj.getIsProcessing(), dtoObj.getDateTime());
+        ParserFactory parser = ParserFactory.getInstance();
+        Location entity = parser.LocationToEntity(dtoObj);
         return locationFacadeLocal.createLocation(entity);
     }
 
@@ -39,7 +41,8 @@ public class LocationFacadeREST {
     @Path("update/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, LocationDTO dtoObj) {
-        Location entity = new Location(dtoObj.getLocationId(), dtoObj.getLongitude(), dtoObj.getLatitude(), dtoObj.getStatus(), dtoObj.getIsDelivered(), dtoObj.getIsOutForDelivery(), dtoObj.getIsCollecting(), dtoObj.getIsProcessing(), dtoObj.getDateTime());
+        ParserFactory parser = ParserFactory.getInstance();
+        Location entity = parser.LocationToEntity(dtoObj);
         locationFacadeLocal.edit(entity);
     }
 
