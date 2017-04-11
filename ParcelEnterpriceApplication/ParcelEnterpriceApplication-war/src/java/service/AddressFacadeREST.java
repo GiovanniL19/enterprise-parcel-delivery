@@ -2,7 +2,6 @@ package service;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -22,7 +21,6 @@ import uk.co.giovannilenguito.entities.Address;
  * @author Giovanni Lenguito <giovanni16.gl@gmail.com>
  */
 @Stateless
-@LocalBean
 @Path("address")
 public class AddressFacadeREST {
 
