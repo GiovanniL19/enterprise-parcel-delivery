@@ -52,7 +52,7 @@ public class LogFacadeRESTIT extends TestCase{
     
     @Test
     public void testFindAll() throws Exception {
-        String response = connectionHandler.get(new URL("http://localhost:8080/ParcelEnterpriceApplication-war/driver/logs/find/all"));
+        String response = connectionHandler.get(new URL("http://localhost:8080/ParcelEnterpriceApplication-war/logs/find/all"));
         assertNotNull(response);
         
     }

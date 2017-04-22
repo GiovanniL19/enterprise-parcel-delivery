@@ -38,7 +38,7 @@ public class AddressFacadeRESTIT extends TestCase {
 
     @Test
     public void testEdit() throws Exception {
-        String data = "{\"lineOneonefdf\",\"lineTwo\":\"two\",\"city\":\"city\",\"postcode\":\"postcode\",\"country\":\"dd\",\"addressId\":0}";
+        String data = "{\"lineOne\":\"updated line one\",\"lineTwo\":\"fdf\",\"city\":\"dfd\",\"postcode\":\"fdf\",\"country\":\"dd\",\"addressId\":"+id+"}";
         boolean response = connectionHandler.put(new URL("http://localhost:8080/ParcelEnterpriceApplication-war/address/update/" + id), data);
         assertEquals(response, true);
     }
