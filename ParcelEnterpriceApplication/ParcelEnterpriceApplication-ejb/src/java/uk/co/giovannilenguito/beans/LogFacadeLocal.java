@@ -11,7 +11,7 @@ import uk.co.giovannilenguito.entities.Log;
 @Local
 public interface LogFacadeLocal {
 
-    void create(Log log);
+    int createLog(Log log);
 
     void edit(Log log);
 

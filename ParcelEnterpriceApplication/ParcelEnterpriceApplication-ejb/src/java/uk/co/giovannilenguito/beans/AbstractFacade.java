@@ -4,7 +4,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import uk.co.giovannilenguito.entities.Address;
+import uk.co.giovannilenguito.entities.Customer;
+import uk.co.giovannilenguito.entities.Driver;
 import uk.co.giovannilenguito.entities.Location;
+import uk.co.giovannilenguito.entities.Log;
+import uk.co.giovannilenguito.entities.Parcel;
 /**
  *
  * @author Giovanni Lenguito <giovanni16.gl@gmail.com>
@@ -20,15 +24,39 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public int createLocation(Location entity) {
-       getEntityManager().persist(entity);
-       getEntityManager().flush();
+        getEntityManager().persist(entity);
+        getEntityManager().flush();
         return entity.getLocationId();
     }
     
     public int createAddress(Address entity) {
-       getEntityManager().persist(entity);
-       getEntityManager().flush();
+        getEntityManager().persist(entity);
+        getEntityManager().flush();
         return entity.getAddressId();
+    }
+    
+    public int createCustomer(Customer entity){
+        getEntityManager().persist(entity);
+        getEntityManager().flush();
+        return entity.getCustomerId();
+    }
+    
+    public int createDriver(Driver entity){
+        getEntityManager().persist(entity);
+        getEntityManager().flush();
+        return entity.getDriverId();
+    }
+    
+    public int createLog(Log entity){
+        getEntityManager().persist(entity);
+        getEntityManager().flush();
+        return entity.getLogId();
+    }
+    
+    public int createParcel(Parcel entity){
+        getEntityManager().persist(entity);
+        getEntityManager().flush();
+        return entity.getParcelId();
     }
     
     public void create(T entity) {

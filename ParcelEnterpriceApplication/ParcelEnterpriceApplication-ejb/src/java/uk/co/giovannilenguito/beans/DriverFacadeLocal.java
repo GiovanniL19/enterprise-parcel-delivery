@@ -11,7 +11,7 @@ import uk.co.giovannilenguito.entities.Driver;
 @Local
 public interface DriverFacadeLocal {
 
-    void create(Driver driver);
+    int createDriver(Driver driver);
 
     void edit(Driver driver);
 

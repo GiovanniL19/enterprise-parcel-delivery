@@ -32,10 +32,10 @@ public class DriverFacadeREST{
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(DriverDTO dtoObj) {
+    public int create(DriverDTO dtoObj) {
         ParserFactory parser = ParserFactory.getInstance();
         Driver entity = parser.DriverToEntity(dtoObj);
-        driverFacadeLocal.create(entity);
+        return driverFacadeLocal.createDriver(entity);
     }
 
     @PUT

@@ -11,7 +11,7 @@ import uk.co.giovannilenguito.entities.Customer;
 @Local
 public interface CustomerFacadeLocal {
 
-    void create(Customer customer);
+    int createCustomer(Customer customer);
 
     void edit(Customer customer);
 

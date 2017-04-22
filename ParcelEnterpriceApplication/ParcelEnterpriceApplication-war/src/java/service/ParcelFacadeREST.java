@@ -47,7 +47,7 @@ public class ParcelFacadeREST {
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(ParcelDTO dtoObj) {
+    public int create(ParcelDTO dtoObj) {
         Address address = addressFacadeLocal.find(dtoObj.getAddressId());
         Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
@@ -55,7 +55,7 @@ public class ParcelFacadeREST {
         
         ParserFactory parser = ParserFactory.getInstance();
         Parcel entity = parser.ParcelToEntity(dtoObj, address, customer, driver, location);
-        parcelFacadeLocal.create(entity);
+        return parcelFacadeLocal.createParcel(entity);
     }
 
     @PUT

@@ -11,7 +11,7 @@ import uk.co.giovannilenguito.entities.Parcel;
 @Local
 public interface ParcelFacadeLocal {
 
-    void create(Parcel parcel);
+    int createParcel(Parcel parcel);
 
     void edit(Parcel parcel);
 

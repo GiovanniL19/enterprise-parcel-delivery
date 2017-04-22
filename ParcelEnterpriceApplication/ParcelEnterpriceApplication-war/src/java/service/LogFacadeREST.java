@@ -56,13 +56,13 @@ public class LogFacadeREST {
     @POST
     @Path("new")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(LogDTO dtoObj) {
+    public int create(LogDTO dtoObj) {
         Customer customer = customerFacadeLocal.find(dtoObj.getCustomerId());
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
         
         ParserFactory parser = ParserFactory.getInstance();
         Log entity = parser.LogToEntity(dtoObj, customer, driver);
-        logFacadeLocal.create(entity);
+        return logFacadeLocal.createLog(entity);
     }
 
     @PUT
