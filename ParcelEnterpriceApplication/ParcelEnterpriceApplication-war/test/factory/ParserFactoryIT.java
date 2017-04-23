@@ -36,7 +36,7 @@ public class ParserFactoryIT {
         AddressDTO dtoObj = new AddressDTO();
         ParserFactory instance = ParserFactory.getInstance();
         Address expResult = new Address();
-        Address result = instance.AddressToEntity(dtoObj);
+        Address result = instance.addressToEntity(dtoObj);
         assertEquals(expResult, result);
     }
 
@@ -46,7 +46,7 @@ public class ParserFactoryIT {
         Address address = new Address();
         ParserFactory instance = ParserFactory.getInstance();
         Customer expResult = new Customer();
-        Customer result = instance.CustomerToEntity(dtoObj, address);
+        Customer result = instance.customerToEntity(dtoObj, address);
         assertEquals(expResult, result);
     }
 
@@ -55,7 +55,7 @@ public class ParserFactoryIT {
         DriverDTO dtoObj = new DriverDTO();
         ParserFactory instance = ParserFactory.getInstance();
         Driver expResult = new Driver();
-        Driver result = instance.DriverToEntity(dtoObj);
+        Driver result = instance.driverToEntity(dtoObj);
         assertEquals(expResult, result);
     }
 
@@ -64,7 +64,7 @@ public class ParserFactoryIT {
         LocationDTO dtoObj = new LocationDTO();
         ParserFactory instance = ParserFactory.getInstance();
         Location expResult = new Location();
-        Location result = instance.LocationToEntity(dtoObj);
+        Location result = instance.locationToEntity(dtoObj);
         assertEquals(expResult, result);
     }
 
@@ -79,7 +79,7 @@ public class ParserFactoryIT {
         ParserFactory instance = ParserFactory.getInstance();
         Parcel expResult = new Parcel();
         expResult.setParcelId(0);
-        Parcel result = instance.ParcelToEntity(dtoObj, address, customer, driver, location);
+        Parcel result = instance.parcelToEntity(dtoObj, address, customer, driver, location);
         assertEquals(expResult, result);
     }
 
@@ -91,7 +91,7 @@ public class ParserFactoryIT {
         
         ParserFactory instance = ParserFactory.getInstance();
         Log expResult = new Log();
-        Log result = instance.LogToEntity(dtoObj, customer, driver);
+        Log result = instance.logToEntity(dtoObj, customer, driver);
         assertEquals(expResult, result);
     }
     

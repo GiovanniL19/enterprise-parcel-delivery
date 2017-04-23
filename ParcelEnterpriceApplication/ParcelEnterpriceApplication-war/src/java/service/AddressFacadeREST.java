@@ -33,7 +33,7 @@ public class AddressFacadeREST {
     @Consumes(MediaType.APPLICATION_JSON)
     public int create(AddressDTO dtoObj) {
         ParserFactory parser = ParserFactory.getInstance();
-        Address entity = parser.AddressToEntity(dtoObj);
+        Address entity = parser.addressToEntity(dtoObj);
         return addressFacadeLocal.createAddress(entity);
     }
 
@@ -42,7 +42,7 @@ public class AddressFacadeREST {
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, AddressDTO dtoObj) {
         ParserFactory parser = ParserFactory.getInstance();
-        Address entity = parser.AddressToEntity(dtoObj);
+        Address entity = parser.addressToEntity(dtoObj);
         addressFacadeLocal.edit(entity);
     }
 

@@ -54,7 +54,7 @@ public class ParcelFacadeREST {
         Location location = locationFacadeLocal.find(dtoObj.getLocationId());
         
         ParserFactory parser = ParserFactory.getInstance();
-        Parcel entity = parser.ParcelToEntity(dtoObj, address, customer, driver, location);
+        Parcel entity = parser.parcelToEntity(dtoObj, address, customer, driver, location);
         return parcelFacadeLocal.createParcel(entity);
     }
 
@@ -68,7 +68,7 @@ public class ParcelFacadeREST {
         Location location = locationFacadeLocal.find(dtoObj.getLocationId());
         
         ParserFactory parser = ParserFactory.getInstance();
-        Parcel entity = parser.ParcelToEntity(dtoObj, address, customer, driver, location);
+        Parcel entity = parser.parcelToEntity(dtoObj, address, customer, driver, location);
         parcelFacadeLocal.edit(entity);
     }
 

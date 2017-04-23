@@ -39,7 +39,7 @@ public class CustomerFacadeREST{
     public int create(CustomerDTO dtoObj) {
         Address address = addressFacadeLocal.find(dtoObj.getAddressId());
         ParserFactory parser = ParserFactory.getInstance();
-        Customer entity = parser.CustomerToEntity(dtoObj, address);
+        Customer entity = parser.customerToEntity(dtoObj, address);
         return customerFacadeLocal.createCustomer(entity);
     }
 
@@ -49,7 +49,7 @@ public class CustomerFacadeREST{
     public void edit(@PathParam("id") int id, CustomerDTO dtoObj) {
         Address address = addressFacadeLocal.find(dtoObj.getAddressId());
         ParserFactory parser = ParserFactory.getInstance();
-        Customer entity = parser.CustomerToEntity(dtoObj, address);
+        Customer entity = parser.customerToEntity(dtoObj, address);
         customerFacadeLocal.edit(entity);
     }
 

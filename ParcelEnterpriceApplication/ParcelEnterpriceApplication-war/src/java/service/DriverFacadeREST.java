@@ -34,7 +34,7 @@ public class DriverFacadeREST{
     @Consumes(MediaType.APPLICATION_JSON)
     public int create(DriverDTO dtoObj) {
         ParserFactory parser = ParserFactory.getInstance();
-        Driver entity = parser.DriverToEntity(dtoObj);
+        Driver entity = parser.driverToEntity(dtoObj);
         return driverFacadeLocal.createDriver(entity);
     }
 
@@ -43,7 +43,7 @@ public class DriverFacadeREST{
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, DriverDTO dtoObj) {
         ParserFactory parser = ParserFactory.getInstance();
-        Driver entity = parser.DriverToEntity(dtoObj);
+        Driver entity = parser.driverToEntity(dtoObj);
         driverFacadeLocal.edit(entity);
     }
 

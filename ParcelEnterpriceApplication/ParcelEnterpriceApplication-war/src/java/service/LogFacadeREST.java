@@ -61,7 +61,7 @@ public class LogFacadeREST {
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
         
         ParserFactory parser = ParserFactory.getInstance();
-        Log entity = parser.LogToEntity(dtoObj, customer, driver);
+        Log entity = parser.logToEntity(dtoObj, customer, driver);
         return logFacadeLocal.createLog(entity);
     }
 
@@ -73,7 +73,7 @@ public class LogFacadeREST {
         Driver driver = driverFacadeLocal.find(dtoObj.getDriverId());
         
         ParserFactory parser = ParserFactory.getInstance();
-        Log entity = parser.LogToEntity(dtoObj, customer, driver);
+        Log entity = parser.logToEntity(dtoObj, customer, driver);
         logFacadeLocal.edit(entity);
     }
 

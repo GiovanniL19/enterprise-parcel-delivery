@@ -29,27 +29,27 @@ public class ParserFactory {
         return instance;
     }
     
-    public Address AddressToEntity(AddressDTO dtoObj){
+    public Address addressToEntity(AddressDTO dtoObj){
      return new Address(dtoObj.getAddressId(), dtoObj.getLineOne(), dtoObj.getLineTwo(), dtoObj.getCity(), dtoObj.getPostcode(), dtoObj.getCountry());
     }
     
-    public Customer CustomerToEntity(CustomerDTO dtoObj, Address address){
+    public Customer customerToEntity(CustomerDTO dtoObj, Address address){
      return new Customer(dtoObj.getCustomerId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName(), address);
     }
     
-    public Driver DriverToEntity(DriverDTO dtoObj){
+    public Driver driverToEntity(DriverDTO dtoObj){
         return new Driver(dtoObj.getDriverId(), dtoObj.getEmail(), dtoObj.getContactNumber(), dtoObj.getUsername(), dtoObj.getPassword(), dtoObj.getFullName());
     }
     
-    public Location LocationToEntity(LocationDTO dtoObj){
+    public Location locationToEntity(LocationDTO dtoObj){
         return new Location(dtoObj.getLocationId(), dtoObj.getLongitude(), dtoObj.getLatitude(), dtoObj.getStatus(), dtoObj.getIsDelivered(), dtoObj.getIsOutForDelivery(), dtoObj.getIsCollecting(), dtoObj.getIsProcessing(), dtoObj.getDateTime());
     }
     
-    public Parcel ParcelToEntity(ParcelDTO dtoObj, Address address, Customer customer, Driver driver, Location location){
+    public Parcel parcelToEntity(ParcelDTO dtoObj, Address address, Customer customer, Driver driver, Location location){
         return new Parcel(dtoObj.getParcelId(), dtoObj.getServiceType(), dtoObj.getContents(), dtoObj.getDateBooked(), dtoObj.getDeliveryDate(), address, customer, driver, location);
     }
     
-    public Log LogToEntity(LogDTO dtoObj, Customer customer, Driver driver){
+    public Log logToEntity(LogDTO dtoObj, Customer customer, Driver driver){
         return new Log(dtoObj.getLogId(), dtoObj.getTitle(), dtoObj.getMessage(), customer, driver);
     }
     

@@ -33,7 +33,7 @@ public class LocationFacadeREST {
     @Consumes(MediaType.APPLICATION_JSON)
     public int create(LocationDTO dtoObj) {
         ParserFactory parser = ParserFactory.getInstance();
-        Location entity = parser.LocationToEntity(dtoObj);
+        Location entity = parser.locationToEntity(dtoObj);
         return locationFacadeLocal.createLocation(entity);
     }
 
@@ -42,7 +42,7 @@ public class LocationFacadeREST {
     @Consumes(MediaType.APPLICATION_JSON)
     public void edit(@PathParam("id") int id, LocationDTO dtoObj) {
         ParserFactory parser = ParserFactory.getInstance();
-        Location entity = parser.LocationToEntity(dtoObj);
+        Location entity = parser.locationToEntity(dtoObj);
         locationFacadeLocal.edit(entity);
     }
 
